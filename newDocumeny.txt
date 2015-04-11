@@ -3,4 +3,14 @@ titsmcGee
 
 warglarbl
 
+<<<<<<< HEAD
 asdfasdfasdf
+=======
+sdfdsafs
+adsf
+aasd
+f
+asdf
+asdf
+ads
+>>>>>>> master
