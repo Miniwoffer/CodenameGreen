@@ -1,7 +1,7 @@
-﻿package Scripts {
+﻿package scripts {
 	
 	import flash.display.SimpleButton;
-	import flash.events.MouseEvent.*;
+	import flash.events.MouseEvent;
 	
 	
 	public class Playbutton extends SimpleButton {
@@ -10,11 +10,11 @@
 		public function Playbutton() 
 		{
 			trace("HAHAHAH");
-			addEventListener(Mouse.CLICK, introIsPressed);
+			addEventListener(MouseEvent.CLICK, introIsPressed);
 		}
 		function introIsPressed (e:MouseEvent)
 		{
-			gotoAndPlay(2);
+			//gotoAndPlay(2);
 			trace("HAHAHAH");
 		}
 	}
