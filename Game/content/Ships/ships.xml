@@ -26,9 +26,9 @@
     <ship>
         <name>Ship Two</name>
         <imgname>ship2.png</imgname>
-        <health>120</health>
-        <armor>20</armor>
-        <speed>100</speed>
+        <health>115</health>
+        <armor>55</armor>
+        <speed>85</speed>
         <mounts>
             <mount>
                 <x>15</x>
