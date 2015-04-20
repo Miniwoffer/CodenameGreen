@@ -10,7 +10,7 @@
 		public function Playbutton() 
 		{
 			trace("HAHAHAH");
-			addEventListener(Mouse.CLICK, introIsPressed);
+			addEventListener(MouseEvent.CLICK, introIsPressed);
 		}
 		function introIsPressed (e:MouseEvent)
 		{
