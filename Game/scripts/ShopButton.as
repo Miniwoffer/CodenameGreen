@@ -18,7 +18,7 @@
 		var whiteColor = new ColorTransform(0xFFFFFF);
 		var blackColor = new ColorTransform(0x000000);
 
-		public function weaponText() {
+		public function ShopButton() {
 			textfield = (TextField)(getChildByName("texT"));
 			loaderInfo.addEventListener(Event.INIT, onInit);
 			addEventListener(MouseEvent.MOUSE_OVER, wTextEnter);
