@@ -9,6 +9,7 @@
 	import scripts.Ship;
 	
 	public class Main extends MovieClip {
+		/*
 		
 		private var colTester:CollisionTest;
 		private var gameObject = new Array();
@@ -22,11 +23,12 @@
 					gameObject.push(go);
 				}
 			}
-			addEventListener(Event.ENTER_FRAME,frameEnter);
+			//addEventListener(Event.ENTER_FRAME,frameEnter);
 		}
 		
 		//a Override for the addChild function so all GameObjects gets added to a seperate list that cheks for collision.
 		//
+		
 		override public function addChild(child:DisplayObject):DisplayObject
 		{
 			var go:GameObject = (GameObject)(child);
@@ -36,6 +38,7 @@
 			}
 			return super.addChild(child);
 		}
+		
 		public function frameEnter(e:Event){
 			for(var i:int = 0;i < gameObject.length; i++){
 				for(var j:int = i+1;j < gameObject.length; j++)
@@ -47,7 +50,7 @@
 					}
 				}
 			}
-		}
+		} */
 	}
 	
 }
