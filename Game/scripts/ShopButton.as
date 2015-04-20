@@ -21,7 +21,6 @@
 		public function weaponText() {
 			textfield = (TextField)(getChildByName("texT"));
 			loaderInfo.addEventListener(Event.INIT, onInit);
-			loaderInfo.addEventListener(Event.COMPLETE, onInit);
 			addEventListener(MouseEvent.MOUSE_OVER, wTextEnter);
 			addEventListener(MouseEvent.MOUSE_OUT, wTextExit);
 		}
