@@ -27,7 +27,6 @@
 			healthValue.text = xmlData[0].ship[i].health
 			armorValue.text = xmlData[0].ship[i].armor
 			speedValue.text = xmlData[0].ship[i].speed
-			sizeValue.text = xmlData[0].ship[0].size
 		}
 		
 	}
