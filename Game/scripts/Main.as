@@ -10,10 +10,8 @@
 	import scripts.XmlLoader;
 	
 	public class Main extends MovieClip {
-		private var shipArray = new XmlLoader();
-		
 		public function Main() {
-		
+		new XmlLoader();
 		}
 		/*
 		

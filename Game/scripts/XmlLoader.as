@@ -1,4 +1,4 @@
-﻿package scripts  {
+﻿gitpackage scripts  {
 
 	import flash.display.Loader;
 	import flash.net.URLRequest;
@@ -25,6 +25,7 @@
 		private function Ferdig (evt:Event){
 			shipXml = new XML(loader.data);
 			done++;
+			trace(shipXml.length());
 		}
 		
 		static public function getShipData():XML{
