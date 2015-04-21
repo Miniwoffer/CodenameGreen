@@ -11,7 +11,7 @@
 		static var loader:URLLoader = new URLLoader();
 		loader.addEventListener(Event.COMPLETE, Ferdig);
 
-		static var shipUrl:URLRequest = new URLRequest("content/ships/ships.xml")
+		static var shipUrl:URLRequest = new URLRequest("content/content.xml")
 		static var shipXml:XML;
 		
 		public function XmlLoader() {
