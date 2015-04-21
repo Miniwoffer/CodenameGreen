@@ -67,30 +67,52 @@
 		
 		function shipCategoryUp (e:MouseEvent){
 			var xmlData = XmlLoader.getShipData();
+			trace("Length: "+xmlData[0].ships.children().length());
 			if (isShipSelected){
-				if(shipNumber <= xmlData[0].ship.length){
+				if(shipNumber+1 < xmlData[0].ships.children().length()){
 					shipNumber ++;
+					shipSelected(null);
+				}
+				else
+				{
+					shipNumber = 0;
 					shipSelected(null);
 				}
 			}
 			else if (!isShipSelected){
-				if(wepNumber <= xmlData[0].ship.length){
+				if(wepNumber+1 < xmlData[0].weapons.children().length()){
 					wepNumber ++;
+					weaponSelected(null);
+				}
+				else
+				{
+					wepNumber = 0;
 					weaponSelected(null);
 				}
 			}
 		}
 		
 		function shipCategoryDown (e:MouseEvent){
+			var xmlData = XmlLoader.getShipData();
 			if (isShipSelected){
 				if(shipNumber >  0){
 					shipNumber --;
+					shipSelected(null);
+				}
+				else
+				{
+					shipNumber = xmlData[0].ships.children().length();
 					shipSelected(null);
 				}
 			}
 			else if (!isShipSelected){
 				if(wepNumber >  0){
 					wepNumber --;
+					weaponSelected(null);
+				}
+				else
+				{
+					wepNumber = xmlData[0].weapons.children().length();
 					weaponSelected(null);
 				}
 			}
