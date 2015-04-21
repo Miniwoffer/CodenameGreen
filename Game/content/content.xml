@@ -47,6 +47,29 @@
 				</mount>
 			</mounts>
 		</ship>
+		<ship>
+			<name>Mjolnir Destroyer</name>
+			<imgname>MjolnirDestroyer.png</imgname>
+			<health>80</health>
+			<armor>60</armor>
+			<speed>90</speed>
+			<mounts>
+				<mount>
+					<x>15</x>
+					<y>10</y>
+					<rot>0</rot>
+					<movement>0</movement>
+					<size>small</size>
+				</mount>
+				<mount>
+					<x>15</x>
+					<y>10</y>
+					<rot>0</rot>
+					<movement>0</movement>
+					<size>small</size>
+				</mount>
+			</mounts>
+		</ship>
 	</ships>
 	
 	<weapons>
