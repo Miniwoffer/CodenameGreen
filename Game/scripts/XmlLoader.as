@@ -22,7 +22,6 @@
 		
 		static private function Ferdig (evt:Event){
 			shipXml = new XML(loader.data);
-			trace(shipXml.length());
 		}
 		
 		static public function getShipData():XML{
