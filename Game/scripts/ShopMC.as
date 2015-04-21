@@ -25,11 +25,12 @@
 			shipIcon.load(new URLRequest(xmlData.nativePath + "content/images/weapons/" + xmlData[0].weapons.weapon[wepNumber].imgname));
 			addChild(shipIcon);
 			// TWEEN SENERE ?
-			shopInfoText1.text = "Damage:"
-			shopInfoText2.text = "Projectile:"
-			shopInfoText3.text = "Speed:"
-			shopValueText1.text = xmlData[0].weapons.weapon[wepNumber].damage
-			shopValueText2.text = xmlData[0].weapons.weapon[wepNumber].type
+			shopInfoText1.text = "Damage:";
+			shopInfoText2.text = "Projectile:";
+			shopInfoText3.text = "Speed:";
+			objectName.text = xmlData[0].weapons.weapon[wepNumber].name;
+			shopValueText1.text = xmlData[0].weapons.weapon[wepNumber].damage;
+			shopValueText2.text = xmlData[0].weapons.weapon[wepNumber].type;
 			if(xmlData[0].weapons.weapon[wepNumber].speed > 200){
 				shopValueText3.text = "Fast";
 			}
@@ -50,6 +51,7 @@
 			shopInfoText1.text = "Health:";
 			shopInfoText2.text = "Armor:";
 			shopInfoText3.text = "Speed:";
+			objectName.text = xmlData[0].ships.ship[shipNumber].name;
 			shopValueText1.text = xmlData[0].ships.ship[shipNumber].health;
 			shopValueText2.text = xmlData[0].ships.ship[shipNumber].armor;
 			if(xmlData[0].ships.ship[shipNumber].speed > 200){
