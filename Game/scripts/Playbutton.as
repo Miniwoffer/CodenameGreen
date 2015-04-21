@@ -13,7 +13,7 @@
 		}
 		function introIsPressed (e:MouseEvent)
 		{
-			gotoAndPlay(2);
+			//gotoAndPlay(2);
 		}
 	}
 	
