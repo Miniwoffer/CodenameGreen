@@ -6,6 +6,12 @@ bin-release/
 # Other files and folders
 .settings/
 
+#compiled swf files
+*.swf
+
+#ignore tag for files
+*_i.*
+
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
