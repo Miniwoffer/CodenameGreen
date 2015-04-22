@@ -1,4 +1,10 @@
 <XML>
+	<settings>
+		<imgfolders>
+			<ships>content/images/ships/</ships>
+			<weapons>content/images/weapons/</weapons>
+		</imgfolders>
+	</settings>
 	<ships>
 		<ship>
 			<name>Ship one</name>

@@ -32,7 +32,7 @@
 			if(main == null)
 				main = this;
 			
-			xmlLoader = new XmlLoader();
+			xmlLoader = new XmlLoader("content/content.xml");
 			imageLoader = new ImageLoader();
 			timerMouseHide.addEventListener(TimerEvent.TIMER_COMPLETE, mHide);
 			stage.addEventListener(Event.ENTER_FRAME, checkMovement);
