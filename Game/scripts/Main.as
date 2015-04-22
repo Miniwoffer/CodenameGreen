@@ -6,6 +6,7 @@
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
 	
+	//Laster in alle third party Scripts
 	import thirdparty.CollisionTest;
 	import scripts.GameObject;
 	import scripts.Ship;
@@ -13,22 +14,31 @@
 	import scripts.MouseHide;
 	
 	public class Main extends MovieClip {
-		
-		public function Main() {
-			new XmlLoader();
-			timerMouseHide.addEventListener(TimerEvent.TIMER_COMPLETE, mHide);
-			stage.addEventListener(Event.ENTER_FRAME, checkMovement);
-		}
 	
-		/*
+		public var debug = true;
 		
 		private var colTester:CollisionTest;
-		private var gameObject = new Array();
+		private var gameObject;
+		private var xmlLoader:XmlLoader;
+		private var imageLoader:ImageLoader;
+		static var main:Main;
+		
+		static function getMain():Main
+		{
+			return main;
+		}
 		public function Main() {
 			// constructor code
+			if(main == null)
+				main = this;
+			
+			xmlLoader = new XmlLoader();
+			imageLoader = new ImageLoader();
+			timerMouseHide.addEventListener(TimerEvent.TIMER_COMPLETE, mHide);
+			stage.addEventListener(Event.ENTER_FRAME, checkMovement);
 			colTester = new CollisionTest();
 			for(var i:int = 0;i < numChildren; i++){
-				var go:GameObject = (GameObject)(getChildAt(i));
+				var go:GameObject = getChildAt(i) as GameObject;
 				if(go != null)
 				{
 					gameObject.push(go);
@@ -42,7 +52,7 @@
 		
 		override public function addChild(child:DisplayObject):DisplayObject
 		{
-			var go:GameObject = (GameObject)(child);
+			var go:GameObject = child as GameObject;
 			if(go != null)
 			{
 				gameObject.push(go);
@@ -61,7 +71,13 @@
 					}
 				}
 			}
-		} */
+		} 
+		public function getXMLLoader():XmlLoader{
+			return xmlLoader;
+		}
+		public function getImageLoader():ImageLoader{
+			return imageLoader;
+		}
 			// HER KOMMER NÅ MOUSE FUNKSJONEN SOM SKJULER DEN AUTOMATISK
 			var switcher:int = 0;
 			var posX1:Number = stage.mouseX;

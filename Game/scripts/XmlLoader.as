@@ -25,10 +25,20 @@
 		
 		static private function Ferdig (evt:Event){
 			shipXml = new XML(loader.data);
-			imgLoader = new Loader();
-			loadImages(null);
-			imgLoader.addEventListener(Event.COMPLETE, loadImages);
-	    	imgLoader.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+			
+			//imgLoader = new Loader();
+			//loadImages(null);
+			//imgLoader.addEventListener(Event.COMPLETE, loadImages);
+	    	//imgLoader.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+			var mymimgLoader:ImageLoader = Main.getMain().getImageLoader();
+			for(var i:int = 0; i < shipXml[0].ships.children().length(); i++)
+			{
+				shipXml[0].ships.ship[i].imgnum = mymimgLoader.addImage("content/images/ships/" + shipXml[0].ships.ship[i].imgname);
+			}
+			for(var j:int = 0; j < shipXml[0].weapons.children().length(); j++)
+			{
+				shipXml[0].weapons.weapon[j].imgnum = mymimgLoader.addImage(shipXml[0].weapons.weapon[j].imgname);
+			}
 		}
 		
 		static public function getShipData():XML{
