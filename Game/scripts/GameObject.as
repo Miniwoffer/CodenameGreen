@@ -9,12 +9,12 @@
 		
 		public function GameObject() {
 			// constructor code
-			addEventListener(Event.ENTER_FRAME,frameEnter);
+			addEventListener(Event.ENTER_FRAME,update);
 		}
 		
 		
 		//Gets called each fram, its immportatnt to use super.framEnter() if you override this.
-		public function frameEnter(e:Event){
+		public function update(e:Event){
 			if(lastisCol == false && isInCol == true)
 				onExitCollision(otherCol);
 			lastisCol = false;

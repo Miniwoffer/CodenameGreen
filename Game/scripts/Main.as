@@ -18,7 +18,7 @@
 		public var debug = true;
 		
 		private var colTester:CollisionTest;
-		private var gameObject;
+		private var gameObjects:Array;
 		private var xmlLoader:XmlLoader;
 		private var imageLoader:ImageLoader;
 		static var main:Main;
@@ -35,16 +35,17 @@
 			xmlLoader = new XmlLoader("content/content.xml");
 			imageLoader = new ImageLoader();
 			timerMouseHide.addEventListener(TimerEvent.TIMER_COMPLETE, mHide);
+			gameObjects = new Array();
 			stage.addEventListener(Event.ENTER_FRAME, checkMovement);
 			colTester = new CollisionTest();
 			for(var i:int = 0;i < numChildren; i++){
 				var go:GameObject = getChildAt(i) as GameObject;
 				if(go != null)
 				{
-					gameObject.push(go);
+					gameObjects.push(go);
 				}
 			}
-			//addEventListener(Event.ENTER_FRAME,frameEnter);
+			addEventListener(Event.ENTER_FRAME,frameEnter);
 		}
 		
 		//a Override for the addChild function so all GameObjects gets added to a seperate list that cheks for collision.
@@ -55,19 +56,32 @@
 			var go:GameObject = child as GameObject;
 			if(go != null)
 			{
-				gameObject.push(go);
+				gameObjects.push(go);
+			}
+			return super.addChild(child);
+		}
+		override public function removeChild(child:DisplayObject):DisplayObject
+		{
+			var go:GameObject = child as GameObject;
+			if(go != null)
+			{
+				for(var i:int = 0; i < gameObjects.length;i++)
+				{
+					if(gameObjects[i] == go)
+						gameObjects.slice(i,1);
+				}
 			}
 			return super.addChild(child);
 		}
 		
 		public function frameEnter(e:Event){
-			for(var i:int = 0;i < gameObject.length; i++){
-				for(var j:int = i+1;j < gameObject.length; j++)
+			for(var i:int = 0;i < gameObjects.length; i++){
+				for(var j:int = i+1;j < gameObjects.length; j++)
 				{
-					if(colTester.complex(gameObject[i],gameObject[j]))
+					if(colTester.complex(gameObjects[i],gameObjects[j]))
 					{
-						gameObject[i].onCollision(gameObject[j]);
-						gameObject[j].onCollision(gameObject[i]);
+						gameObjects[i].onCollision(gameObjects[j]);
+						gameObjects[j].onCollision(gameObjects[i]);
 					}
 				}
 			}

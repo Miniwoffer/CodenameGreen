@@ -5,12 +5,14 @@
 	import scripts.XmlLoader;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
+	import scripts.Player;
 
 	public class ShopMC extends MovieClip {
 		
 		public var isShipSelected:Boolean = false; 
 		var wepNumber = 0;
 		var shipNumber = 0;
+		var player:Player;
 		
 		public function ShopMC() {
 			weaponText.addEventListener(MouseEvent.CLICK, weaponSelected);
@@ -20,6 +22,7 @@
 		}
 		
 		function weaponSelected(e:MouseEvent) {
+			player = new Player();
 			isShipSelected = false;
 			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			shipIcon.load(new URLRequest(xmlData.nativePath + "content/images/weapons/" + xmlData[0].weapons.weapon[wepNumber].imgname));
