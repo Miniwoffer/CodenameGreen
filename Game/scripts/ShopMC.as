@@ -21,9 +21,10 @@
 		
 		function weaponSelected(e:MouseEvent) {
 			isShipSelected = false;
-			var xmlData = XmlLoader.getShipData();
+			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			shipIcon.load(new URLRequest(xmlData.nativePath + "content/images/weapons/" + xmlData[0].weapons.weapon[wepNumber].imgname));
 			addChild(shipIcon);
+			addChild(Main.getMain().getImageLoader().getImage(xmlData[0].weapons.weapon[wepNumber].imgnum));
 			// TWEEN SENERE ?
 			shopInfoText1.text = "Damage:";
 			shopInfoText2.text = "Projectile:";
@@ -44,7 +45,7 @@
 		
 		function shipSelected(e:MouseEvent) {
 			isShipSelected = true;
-			var xmlData = XmlLoader.getShipData();
+			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			shipIcon.load(new URLRequest(xmlData.nativePath + "content/images/ships/" + xmlData[0].ships.ship[shipNumber].imgname));
 			addChild(shipIcon);
 			// TWEEN SENERE ?
@@ -66,8 +67,7 @@
 		}
 		
 		function shipCategoryUp (e:MouseEvent){
-			var xmlData = XmlLoader.getShipData();
-			trace("Length: "+xmlData[0].ships.children().length());
+			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			if (isShipSelected){
 				if(shipNumber+1 < xmlData[0].ships.children().length()){
 					shipNumber ++;
@@ -93,7 +93,7 @@
 		}
 		
 		function shipCategoryDown (e:MouseEvent){
-			var xmlData = XmlLoader.getShipData();
+			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			if (isShipSelected){
 				if(shipNumber >  0){
 					shipNumber --;
@@ -101,7 +101,7 @@
 				}
 				else
 				{
-					shipNumber = xmlData[0].ships.children().length();
+					shipNumber = xmlData[0].ships.children().length()-1;
 					shipSelected(null);
 				}
 			}
@@ -112,7 +112,7 @@
 				}
 				else
 				{
-					wepNumber = xmlData[0].weapons.children().length();
+					wepNumber = xmlData[0].weapons.children().length()-1;
 					weaponSelected(null);
 				}
 			}
