@@ -25,11 +25,11 @@
 		</ship>
 			
 		<ship>
-			<name>Ship Two</name>
-			<imgname>ship2.png</imgname>
-			<health>115</health>
-			<armor>55</armor>
-			<speed>85</speed>
+			<name>Tillennium Fighter</name>
+			<imgname>TillenniumFighter.png</imgname>
+			<health>75</health>
+			<armor>25</armor>
+			<speed>150</speed>
 			<mounts>
 				<mount>
 					<x>15</x>
