@@ -4,6 +4,8 @@
 	import scripts.GameObject;
 	import scripts.Weapon;
 	import flash.display.Bitmap;
+	import flash.geom.Rectangle;
+	import flash.display.BitmapData;
 	
 	public class Ship extends GameObject {
 		var shipName:String;
@@ -15,6 +17,8 @@
 		var rotVelocity:Number;
 		var currentHealth:int;
 		var move:Boolean;
+		
+		var flames:Array;
 
 		public function Ship(id:int,weapons:Array) {
 			// constructor code
@@ -33,6 +37,30 @@
 			speed = xmlData.speed;
 			currentHealth = health;
 			mounts = new Array();
+			flames = new Array();
+			/*
+			for(var i:int = 0;i < xmlData.flames.children().length();i++)
+			{
+				flames.push(new Object());
+				flames[i].x = xmlData.flames.flame[i].x;
+				flames[i].y = xmlData.flames.flame[i].y;
+				flames[i].currentFrame = 0;
+				flames[i].orgImg = Main.getMain().getImageLoader().getImage(xmlData.flames.flame[i].imgnum);
+				flames[i].numFrames = xmlData.flames.flame[i].numframes;
+				flames[i].frames = new Array();
+				
+				var frameHeight = flames[i].orgImg.height/flames[i].numFrames;
+				for(var j:int = 0; j < flames[i].numFrames;j++)
+				{
+					var bit:Bitmap;
+					var frameRect = new Rectangle(0,frameHeight*j,flames[i].orgImg.width,frameHeight)
+					var bitr:BitmapData;
+					//bitr.setPixels(
+					flames[i].frames.push(new Bitmap(flames[i].orgImg.bitmapData.getPixels(frameRect)));
+				}
+					
+			}
+			*/
 			for(var i:int = 0;i < xmlData.mounts.children().length();i++)
 			{
 				velocity = 0;
