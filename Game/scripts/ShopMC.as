@@ -22,7 +22,7 @@
 		}
 		
 		function weaponSelected(e:MouseEvent) {
-			player = new Player();
+			//player = new Player();
 			isShipSelected = false;
 			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			shipIcon.load(new URLRequest(xmlData.nativePath + "content/images/weapons/" + xmlData[0].weapons.weapon[wepNumber].imgname));

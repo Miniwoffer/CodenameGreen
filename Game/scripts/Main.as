@@ -5,6 +5,7 @@
 	import flash.display.DisplayObject;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
+	import flash.geom.Rectangle;
 	
 	//Laster in alle third party Scripts
 	import thirdparty.CollisionTest;
@@ -21,7 +22,9 @@
 		private var gameObjects:Array;
 		private var xmlLoader:XmlLoader;
 		private var imageLoader:ImageLoader;
+		public var gamepaused:Boolean;
 		static var main:Main;
+		public var player:Player;
 		
 		static function getMain():Main
 		{
@@ -32,12 +35,14 @@
 			if(main == null)
 				main = this;
 			
+			gamepaused = new Boolean(false);
 			xmlLoader = new XmlLoader("content/content.xml");
 			imageLoader = new ImageLoader();
 			timerMouseHide.addEventListener(TimerEvent.TIMER_COMPLETE, mHide);
 			gameObjects = new Array();
 			stage.addEventListener(Event.ENTER_FRAME, checkMovement);
 			colTester = new CollisionTest();
+			scrollRect = new Rectangle(0, 0, width, height);
 			for(var i:int = 0;i < numChildren; i++){
 				var go:GameObject = getChildAt(i) as GameObject;
 				if(go != null)

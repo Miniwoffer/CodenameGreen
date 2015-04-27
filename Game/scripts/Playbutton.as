@@ -2,6 +2,8 @@
 	
 	import flash.display.SimpleButton;
 	import flash.events.MouseEvent;
+	import scripts.Main;
+	import scripts.Player;
 	
 	
 	public class Playbutton extends SimpleButton {
@@ -13,7 +15,8 @@
 		}
 		function introIsPressed (e:MouseEvent)
 		{
-			//gotoAndPlay(2);
+			Main.getMain().player = new Player();
+			Main.getMain().gotoAndStop(2);
 		}
 	}
 	

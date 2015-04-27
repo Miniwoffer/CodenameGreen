@@ -6,13 +6,14 @@
 	import flash.display.Bitmap;
 	import flash.geom.Rectangle;
 	import flash.display.BitmapData;
+	import flash.geom.Point;
 	
 	public class Ship extends GameObject {
 		var shipName:String;
 		var health:int;
 		var armor:int;
 		var speed:int;
-		var mounts:Array;
+		var weapons:Array;
 		var velocity:Number;
 		var rotVelocity:Number;
 		var currentHealth:int;
@@ -20,7 +21,7 @@
 		
 		var flames:Array;
 
-		public function Ship(id:int,weapons:Array) {
+		public function Ship(id:int,weps:Array) {
 			// constructor code
 			trace("player created");
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
@@ -36,7 +37,7 @@
 			armor = xmlData.armor;
 			speed = xmlData.speed;
 			currentHealth = health;
-			mounts = new Array();
+			weapons = new Array();
 			flames = new Array();
 			/*
 			for(var i:int = 0;i < xmlData.flames.children().length();i++)
@@ -61,16 +62,13 @@
 					
 			}
 			*/
-			for(var i:int = 0;i < xmlData.mounts.children().length();i++)
+			for(var i:int = 0;i < weps.length && i < xmlData.mounts.children().length();i++)
 			{
 				velocity = 0;
 				rotVelocity = 0;
-				var mnt:WeaponMount = new WeaponMount(xmlData.mounts.mount[i].x,xmlData.mounts.mount[i].y,xmlData.mounts.mount[i].rot,xmlData.mounts.mount[i].movement);
-				addChild(mnt);
-				if(weapons[i] != null)
-					mnt.setWeapon(weapons[i]);
-				
-				mounts.push(mnt);
+				var wep:Weapon = new Weapon(weps[i],xmlData.mounts.mount[i].x,xmlData.mounts.mount[i].y,xmlData.mounts.mount[i].rot,xmlData.mounts.mount[i].speed,xmlData.mounts.mount[i].movement);
+				addChild(wep);
+				weapons.push(wep);
 			}
 			Main.getMain().addChild(this);
 		}
@@ -110,9 +108,12 @@
 		{
 			
 		}
-		public function setWeaponAimLocation(posx,posy)
+		public function setWeaponAimLocation(p:Point)
 		{
-			
+			for(var i:int = 0; i < weapons.length;i++)
+			{
+				weapons[i].setTarget(p);
+			}
 		}
 		public function applyDmg(amount:int)
 		{

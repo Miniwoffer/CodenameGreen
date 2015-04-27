@@ -46,15 +46,15 @@
 			<speed>6</speed>
 			<mounts>
 				<mount>
-					<x>15</x>
-					<y>10</y>
+					<x>10</x>
+					<y>30</y>
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>small</size>
 				</mount>
 				<mount>
-					<x>15</x>
-					<y>10</y>
+					<x>10</x>
+					<y>-30</y>
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>small</size>

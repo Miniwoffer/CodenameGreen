@@ -37,7 +37,7 @@ import flash.display.Bitmap;
 		override public function onCollision(other:GameObject)
 		{
 			super.onCollision(other);
-			if(other != weapon.mount.getShip())
+			if(other != weapon.parent)
 			{
 				var otherShip = (Ship)(other);
 				if(otherShip != null)
