@@ -21,13 +21,17 @@
 		var targetRot:Number;
 		var rotSpeed:Number;
 		var weaponId:int;
-		public function Weapon(weaponid:int,posX:int,posY:int,rot:Number, speed:Number, movement:Number)
+		var staticMount:Boolean;
+		public function Weapon(size:Number,weaponid:int,posX:int,posY:int,rot:Number, speed:Number, movement:Number, staticmount:String)
 		{
+			staticMount = staticmount == "true";
 			weaponId = weaponid;
 			rotSpeed = speed;
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
 			xmlData = xmlData[0].weapons.weapon[weaponid];
 			image = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
+			image.scaleX = size;
+			image.scaleY = size;
 			bullet = new Bullet(weaponid);
 			var center:Number = image.height / 2;
 			x = posX;
@@ -46,6 +50,8 @@
 		}
 		public function setTarget(t:Point)
 		{
+			if(!staticMount)
+			{
 			var p = new Point(t.x,t.y);
 			var main = Main.getMain();
 			p.x -= main.scrollRect.x;
@@ -63,6 +69,7 @@
 			var Degrees:Number = Radians * 180 / Math.PI;
 			// rotate
 			rotation = Degrees - parent.rotation;
+			}
 		}
 		public function shoot()
 		{

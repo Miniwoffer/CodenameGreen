@@ -24,7 +24,7 @@
 			input.right = false;
 			input.left = false;
 			input.shoot = false;
-			myShip = new Ship(1,new Array(1,0,0));
+			myShip = new Ship(0,new Array(1,1,1));
 			Main.getMain().addChild(this);
 			// constructor code
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,kDown);

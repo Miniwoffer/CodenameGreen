@@ -35,14 +35,14 @@
 			if (main == null)
 				main = this;
 
-			gamepaused = new Boolean(false);
+			gamepaused = new Boolean(false); 
 			xmlLoader = new XmlLoader("content/content.xml");
 			imageLoader = new ImageLoader();
 			timerMouseHide.addEventListener(TimerEvent.TIMER_COMPLETE, mHide);
 			gameObjects = new Array();
 			stage.addEventListener(Event.ENTER_FRAME, checkMovement);
 			colTester = new CollisionTest();
-			scrollRect = new Rectangle(0, 0, width, height);
+			scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
 			for (var i: int = 0; i < numChildren; i++) {
 				var go: GameObject = getChildAt(i) as GameObject;
 				if (go != null) {

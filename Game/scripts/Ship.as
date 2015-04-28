@@ -68,7 +68,7 @@
 			{
 				velocity = 0;
 				rotVelocity = 0;
-				var wep:Weapon = new Weapon(weps[i],xmlData.mounts.mount[i].x,xmlData.mounts.mount[i].y,xmlData.mounts.mount[i].rot,xmlData.mounts.mount[i].speed,xmlData.mounts.mount[i].movement);
+				var wep:Weapon = new Weapon(xmlData.mounts.mount[i].size,weps[i],xmlData.mounts.mount[i].x,xmlData.mounts.mount[i].y,xmlData.mounts.mount[i].rot,xmlData.mounts.mount[i].speed,xmlData.mounts.mount[i].movement,xmlData.mounts.mount[i].static);
 				addChild(wep);
 				weapons.push(wep);
 			}
