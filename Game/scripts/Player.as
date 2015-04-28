@@ -63,7 +63,6 @@
 			switch(e.keyCode)
 			{
 				case Keyboard.W: case Keyboard.UP:
-				trace("up");
 					input.up = true;
 				break;
 				

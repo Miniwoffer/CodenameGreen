@@ -15,8 +15,9 @@
 		}
 		function introIsPressed (e:MouseEvent)
 		{
-			Main.getMain().player = new Player();
 			Main.getMain().gotoAndStop(2);
+			Main.getMain().spawnWorld();
+			Main.getMain().player = new Player();
 		}
 	}
 	

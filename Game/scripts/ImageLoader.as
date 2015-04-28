@@ -35,7 +35,7 @@
 			
 			startNext();
 			lasteKoo.push(url)
-			//Legger sammen køens lengde og bildes lengde og trekker fra en siden index starter på 0
+			//Legger sammen køens lengde og bildenes lengde og trekker fra en siden index starter på 0
 			return lasteKoo.length+images.length-1;
 		}
 		//Returnerer blide som ligger lagra, det er viktig å ikke bruke dette til å tegne med siden dens trengs for lagrning

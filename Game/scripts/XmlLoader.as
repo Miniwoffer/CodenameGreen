@@ -29,6 +29,14 @@
 			for(var i:int = 0; i < xmlData[0].ships.children().length(); i++){
 				xmlData[0].ships.ship[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.ships) + xmlData[0].ships.ship[i].imgname);
 			}
+			trace(xmlData[0].settings.images.stars.children().length());
+			for(i = 0; i < xmlData[0].settings.worldgen.images.stars.children().length(); i++){
+				xmlData[0].settings.worldgen.images.stars.star[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.stars) + xmlData[0].settings.worldgen.images.stars.star[i].imgname);
+			}
+			for(i = 0; i < xmlData[0].settings.worldgen.images.planets.children().length(); i++){
+				
+				xmlData[0].settings.worldgen.images.planets.planet[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.planets) + xmlData[0].settings.worldgen.images.planets.planet[i].imgname);
+			}
 			//ber imageLoader laste in alle bilder under Weapons
 			for(var j:int = 0; j < xmlData[0].weapons.children().length(); j++){
 				xmlData[0].weapons.weapon[j].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.weapons) + xmlData[0].weapons.weapon[j].imgname);

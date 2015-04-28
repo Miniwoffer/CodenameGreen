@@ -1,9 +1,43 @@
 <XML>
 	<settings>
+        <worldgen>
+            <mapsize>20000</mapsize>
+            <density><!-- stars/plantes per 1000x1000 pixels -->
+                <stars>200</stars>
+                <planets>5</planets>
+            </density>
+            <stations>2</stations>
+            <images>
+                <stars>
+                    <star>
+                        <imgname>star jamal.png</imgname>
+                    </star>
+                    <star>
+                        <imgname>star juan.png</imgname>
+                    </star>
+                </stars>
+                <planets>
+                    <planet>
+                        <imgname>planet.png</imgname>
+                    </planet>
+                    <planet>
+                        <imgname>planet1.png</imgname>
+                    </planet>
+                     <planet>
+                        <imgname>planet2.png</imgname>
+                    </planet>
+                </planets>
+                <stations>
+                    <station></station>
+                </stations>
+            </images>
+        </worldgen>
 		<imgfolders>
 			<ships>content/images/ships/</ships>
 			<weapons>content/images/weapons/</weapons>
 			<shipflames>content/images/ship flames/</shipflames>
+            <stars>content/images/stars/</stars>
+            <planets>content/images/planets/</planets>
 		</imgfolders>
 	</settings>
 	<ships>
@@ -62,7 +96,6 @@
 			</mounts>
 		</ship>
 	</ships>
-	
 	<weapons>
 		<weapon>
 			<name>Gun One</name>

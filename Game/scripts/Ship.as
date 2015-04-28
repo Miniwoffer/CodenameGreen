@@ -23,7 +23,9 @@
 
 		public function Ship(id:int,weps:Array) {
 			// constructor code
-			trace("player created");
+			tag = "ship";
+			ignore.push("ship");
+			
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
 			xmlData = xmlData[0].ships.ship[id];
 			var image:Bitmap = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
@@ -130,7 +132,6 @@
 		override public function onCollision(other:GameObject)
 		{
 			super.onCollision(other);
-			trace("wobalobadudu");
 		}
 
 	}

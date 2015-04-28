@@ -5,6 +5,7 @@
 	import scripts.GameObject;
 	import flash.events.Event;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 
 	public class Weapon extends MovieClip
 	{
@@ -49,9 +50,10 @@
 			var main = Main.getMain();
 			p.x -= main.scrollRect.x;
 			p.y -= main.scrollRect.y;
-			p = parent.globalToLocal(p);
+			p = p;
 			
-			var m = parent.globalToLocal(localToGlobal(new Point(x,y)));
+			var myRect:Rectangle = getBounds(stage);
+			var m =  new Point(myRect.x,myRect.y);
 			// find out mouse coordinates to find out the angle
 			var cy:Number = p.y - m.y;
 			var cx:Number = p.x - m.x;
@@ -60,7 +62,7 @@
 			// convert to degrees to rotate
 			var Degrees:Number = Radians * 180 / Math.PI;
 			// rotate
-			rotation = Degrees;
+			rotation = Degrees - parent.rotation;
 		}
 		public function shoot()
 		{

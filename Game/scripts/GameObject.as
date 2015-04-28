@@ -6,6 +6,8 @@
 		private var isInCol:Boolean = false;
 		private var lastisCol:Boolean = false;
 		private var otherCol:GameObject;
+		public var tag:String = "GameObject";
+		public var ignore:Array = new Array();
 		
 		public function GameObject() {
 			// constructor code
