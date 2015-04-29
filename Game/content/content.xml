@@ -1,9 +1,46 @@
 <XML>
 	<settings>
+        <worldgen>
+            <mapsize>20000</mapsize>
+            <density><!-- stars/plantes per 1000x1000 pixels -->
+                <stars>200</stars>
+                <planets>5</planets>
+            </density>
+            <stations>2</stations>
+            <images>
+                <stars>
+                    <star>
+                        <imgname>star jamal.png</imgname>
+                    </star>
+                    <star>
+                        <imgname>star juan.png</imgname>
+                    </star>
+                </stars>
+                <planets>
+                    <planet>
+                        <imgname>planet.png</imgname>
+                    </planet>
+                    <planet>
+                        <imgname>planet1.png</imgname>
+                    </planet>
+                     <planet>
+                        <imgname>planet2.png</imgname>
+                    </planet>
+                     <planet>
+                        <imgname>sun.png</imgname>
+                    </planet>
+                </planets>
+                <stations>
+                    <station></station>
+                </stations>
+            </images>
+        </worldgen>
 		<imgfolders>
 			<ships>content/images/ships/</ships>
 			<weapons>content/images/weapons/</weapons>
 			<shipflames>content/images/ship flames/</shipflames>
+            <stars>content/images/stars/</stars>
+            <planets>content/images/planets/</planets>
 		</imgfolders>
 	</settings>
 	<ships>
@@ -23,18 +60,20 @@
 			</flames>
 			<mounts>
 				<mount>
-					<x>15</x>
-					<y>10</y>
+					<x>-5</x>
+					<y>-14</y>
 					<rot>0</rot>
 					<movement>0</movement>
-					<size>small</size>
+					<size>0.4</size>
+                    <static>true</static>
 				</mount>
 				<mount>
-					<x>15</x>
-					<y>10</y>
+					<x>-5</x>
+					<y>14</y>
 					<rot>0</rot>
 					<movement>0</movement>
-					<size>small</size>
+					<size>0.4</size>
+                    <static>true</static>
 				</mount>
 			</mounts>
 		</ship>
@@ -50,19 +89,20 @@
 					<y>30</y>
 					<rot>0</rot>
 					<movement>0</movement>
-					<size>small</size>
+					<size>1</size>
+                    <static>false</static>
 				</mount>
 				<mount>
 					<x>10</x>
 					<y>-30</y>
 					<rot>0</rot>
 					<movement>0</movement>
-					<size>small</size>
+					<size>1</size>
+                    <static>false</static>
 				</mount>
 			</mounts>
 		</ship>
 	</ships>
-	
 	<weapons>
 		<weapon>
 			<name>Gun One</name>
@@ -72,7 +112,14 @@
 			<speed>200</speed>
 			<type>projectile</type>
 		</weapon>
-		
+        <weapon>
+			<name>Rail Gun</name>
+			<imgname>railgun.png</imgname>
+			<bulletimg>bullet1.png</bulletimg>
+			<damage>10</damage>
+			<speed>200</speed>
+			<type>projectile</type>
+		</weapon>
 		<weapon>
 			<name>Gun Two</name>
 			<imgname>gun2.png</imgname>

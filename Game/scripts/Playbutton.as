@@ -15,11 +15,11 @@
 		}
 		function introIsPressed (e:MouseEvent)
 		{
-			Main.getMain().player = new Player();
 			Main.getMain().gotoAndStop(2);
-	
-			//MusicScript.setCurrentTrack(MusicScript.idleSound);
+			Main.getMain().spawnWorld();
+			Main.getMain().player = new Player();
 			
+			MusicScript.setCurrentTrack(MusicScript.idleSound);
 		}
 	}
 	

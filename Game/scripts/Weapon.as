@@ -5,6 +5,7 @@
 	import scripts.GameObject;
 	import flash.events.Event;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 
 	public class Weapon extends MovieClip
 	{
@@ -20,13 +21,17 @@
 		var targetRot:Number;
 		var rotSpeed:Number;
 		var weaponId:int;
-		public function Weapon(weaponid:int,posX:int,posY:int,rot:Number, speed:Number, movement:Number)
+		var staticMount:Boolean;
+		public function Weapon(size:Number,weaponid:int,posX:int,posY:int,rot:Number, speed:Number, movement:Number, staticmount:String)
 		{
+			staticMount = staticmount == "true";
 			weaponId = weaponid;
 			rotSpeed = speed;
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
 			xmlData = xmlData[0].weapons.weapon[weaponid];
 			image = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
+			image.scaleX = size;
+			image.scaleY = size;
 			bullet = new Bullet(weaponid);
 			var center:Number = image.height / 2;
 			x = posX;
@@ -45,13 +50,16 @@
 		}
 		public function setTarget(t:Point)
 		{
+			if(!staticMount)
+			{
 			var p = new Point(t.x,t.y);
 			var main = Main.getMain();
 			p.x -= main.scrollRect.x;
 			p.y -= main.scrollRect.y;
-			p = parent.globalToLocal(p);
+			p = p;
 			
-			var m = parent.globalToLocal(localToGlobal(new Point(x,y)));
+			var myRect:Rectangle = getBounds(stage);
+			var m =  new Point(myRect.x,myRect.y);
 			// find out mouse coordinates to find out the angle
 			var cy:Number = p.y - m.y;
 			var cx:Number = p.x - m.x;
@@ -60,7 +68,8 @@
 			// convert to degrees to rotate
 			var Degrees:Number = Radians * 180 / Math.PI;
 			// rotate
-			rotation = Degrees;
+			rotation = Degrees - parent.rotation;
+			}
 		}
 		public function shoot()
 		{

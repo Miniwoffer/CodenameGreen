@@ -23,7 +23,9 @@
 
 		public function Ship(id:int,weps:Array) {
 			// constructor code
-			trace("player created");
+			tag = "ship";
+			ignore.push("ship");
+			
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
 			xmlData = xmlData[0].ships.ship[id];
 			var image:Bitmap = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
@@ -66,7 +68,7 @@
 			{
 				velocity = 0;
 				rotVelocity = 0;
-				var wep:Weapon = new Weapon(weps[i],xmlData.mounts.mount[i].x,xmlData.mounts.mount[i].y,xmlData.mounts.mount[i].rot,xmlData.mounts.mount[i].speed,xmlData.mounts.mount[i].movement);
+				var wep:Weapon = new Weapon(xmlData.mounts.mount[i].size,weps[i],xmlData.mounts.mount[i].x,xmlData.mounts.mount[i].y,xmlData.mounts.mount[i].rot,xmlData.mounts.mount[i].speed,xmlData.mounts.mount[i].movement,xmlData.mounts.mount[i].static);
 				addChild(wep);
 				weapons.push(wep);
 			}
@@ -130,7 +132,6 @@
 		override public function onCollision(other:GameObject)
 		{
 			super.onCollision(other);
-			trace("wobalobadudu");
 		}
 
 	}
