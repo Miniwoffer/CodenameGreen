@@ -13,9 +13,7 @@
 
 		static public var introSound:Sound = new Sound(new URLRequest("content/sound/Relaxing.mp3"));
 		static public var idleSound:Sound = new Sound(new URLRequest("content/sound/Newdawn.mp3"));
-		static public var epicMusic:Sound = new Sound(new URLRequest("content/sound/Epic.mp3"));
-
-		//static public var playerInBattle:Boolean = true;
+		static public var epicSound:Sound = new Sound(new URLRequest("content/sound/Epic.mp3"));
 		
 		static public var musicChannel:SoundChannel;
 		static public var lastPosition:Number = 0;
@@ -37,7 +35,9 @@
 			musicChannel.stop();
 			currentTrack = soundTrack;
 			lastPosition = 0;
-			start(null);
+			if (Main.getMain().soundMC.pauseButton.visible){
+				start(null);
+			}
 		}
 
 		static function start (e:Event){
