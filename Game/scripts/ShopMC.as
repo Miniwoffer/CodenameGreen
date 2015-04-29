@@ -7,14 +7,17 @@
 	import flash.net.URLRequest;
 	import scripts.Player;
 
-	public class ShopMC extends MovieClip {
+	public class Shop extends MovieClip {
 		
 		public var isShipSelected:Boolean = false; 
 		var wepNumber = 0;
 		var shipNumber = 0;
 		var player:Player;
-		
-		public function ShopMC() {
+		public function setVisibility(bol:Boolean):void{
+			visible = bol;
+		}
+		public function Shop() {
+			Main.getMain().addFolowCamera(this);
 			weaponText.addEventListener(MouseEvent.CLICK, weaponSelected);
 			shipText.addEventListener(MouseEvent.CLICK, shipSelected);
 			shipUp.addEventListener(MouseEvent.CLICK, shipCategoryUp);
@@ -27,7 +30,6 @@
 			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			shipIcon.load(new URLRequest(xmlData.nativePath + "content/images/weapons/" + xmlData[0].weapons.weapon[wepNumber].imgname));
 			addChild(shipIcon);
-			addChild(Main.getMain().getImageLoader().getImage(xmlData[0].weapons.weapon[wepNumber].imgnum));
 			// TWEEN SENERE ?
 			shopInfoText1.text = "Damage:";
 			shopInfoText2.text = "Projectile:";

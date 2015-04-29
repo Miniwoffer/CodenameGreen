@@ -14,18 +14,23 @@
 	import scripts.Ship;
 	import scripts.XmlLoader;
 	import scripts.MouseHide;
+	import flash.geom.Point;
 
 	public class Main extends MovieClip {
 
 		public var debug = true;
-
+		private var followcamMovieClips: Array;
 		private var colTester: CollisionTest;
 		private var gameObjects: Array;
+
 		private var xmlLoader: XmlLoader;
 		private var imageLoader: ImageLoader;
+
 		public var gamepaused: Boolean;
 		static var main: Main;
 		public var player: Player;
+		public var shop: Shop;
+
 
 		static function getMain(): Main {
 			return main;
@@ -34,13 +39,14 @@
 			// constructor code
 			if (main == null)
 				main = this;
-
-			gamepaused = new Boolean(false); 
+			followcamMovieClips = new Array();
+			gamepaused = new Boolean(false);
 			xmlLoader = new XmlLoader("content/content.xml");
 			imageLoader = new ImageLoader();
 			timerMouseHide.addEventListener(TimerEvent.TIMER_COMPLETE, mHide);
 			gameObjects = new Array();
 			stage.addEventListener(Event.ENTER_FRAME, checkMovement);
+			stage.addEventListener(Event.EXIT_FRAME, moveUI);
 			colTester = new CollisionTest();
 			scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
 			for (var i: int = 0; i < numChildren; i++) {
@@ -50,6 +56,10 @@
 				}
 			}
 			addEventListener(Event.ENTER_FRAME, frameEnter);
+
+			var shop = new Shop();
+			shop.visible = false;
+			addChild(shop);
 		}
 
 		//a Override for the addChild function so all GameObjects gets added to a seperate list that cheks for collision.
@@ -72,7 +82,22 @@
 			}
 			return super.addChild(child);
 		}
-
+		public function getCameraCenter(): Point {
+			var pnt: Point = new Point();
+			pnt.x = scrollRect.x + (stage.stageWidth / 2);
+			pnt.y = scrollRect.y + (stage.stageHeight / 2);
+			return pnt;
+		}
+		public function addFolowCamera(mv: MovieClip) {
+			followcamMovieClips.push(mv);
+		}
+		public function moveUI(e: Event) {
+			var centerpnt: Point = getCameraCenter();
+			for (var i: int = 0; i < followcamMovieClips.length; i++) {
+				followcamMovieClips[i].x = centerpnt.x;
+				followcamMovieClips[i].y = centerpnt.y;
+			}
+		}
 		public function frameEnter(e: Event) {
 			for (var i: int = 0; i < gameObjects.length; i++) {
 				for (var j: int = i + 1; j < gameObjects.length; j++) {
@@ -104,28 +129,28 @@
 
 			var spawnMulti: int = xmlData.mapsize / 1000;
 			var stars: int = xmlData.density.stars * spawnMulti;
-			var planets: int = xmlData.density.planets * spawnMulti
-			for (var i: int = 0; i < stars; i++) {
-				var star: Bitmap = imageLoader.getImage(xmlData.images.stars.star[Math.floor(Math.random() * xmlData.images.stars.children().length())].imgnum);
-				star.rotation = Math.random() * 360;
-				star.x = Math.random() * xmlData.mapsize;
-				star.y = Math.random() * xmlData.mapsize;
-				var randSize = (Math.random()*0.5) + 0.2;
-				star.scaleX = randSize;
-				star.scaleY = randSize;
-				addChild(star);
-			}
+			var planets: int = xmlData.density.planets * spawnMulti;
 			for (i = 0; i < planets; i++) {
 				var planet: Bitmap = imageLoader.getImage(xmlData.images.planets.planet[Math.floor(Math.random() * xmlData.images.planets.children().length())].imgnum);
 				planet.rotation = Math.random() * 360;
 				planet.x = Math.random() * xmlData.mapsize;
 				planet.y = Math.random() * xmlData.mapsize;
-				var randSize = (Math.random()*0.5) + 0.2;
+				var randSize = (Math.random() * 0.5) + 0.2;
 				planet.scaleX = randSize;
 				planet.scaleY = randSize;
-				addChild(planet);
-				}
-				
+				addChildAt(planet, 0);
+			}
+			for (var i: int = 0; i < stars; i++) {
+				var star: Bitmap = imageLoader.getImage(xmlData.images.stars.star[Math.floor(Math.random() * xmlData.images.stars.children().length())].imgnum);
+				star.rotation = Math.random() * 360;
+				star.x = Math.random() * xmlData.mapsize;
+				star.y = Math.random() * xmlData.mapsize;
+				randSize = (Math.random() * 0.5) + 0.2;
+				star.scaleX = randSize;
+				star.scaleY = randSize;
+				addChildAt(star, 0);
+			}
+
 		}
 		public function getImageLoader(): ImageLoader {
 			return imageLoader;

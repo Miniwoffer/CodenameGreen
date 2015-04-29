@@ -10,7 +10,7 @@
 	public class ShopButton extends MovieClip {
 
 		[Inspectable]
-		public var Text:String;
+		public var Text:String = "text";
 		
 		
 		var textfield:TextField;
@@ -20,13 +20,9 @@
 
 		public function ShopButton() {
 			textfield = (TextField)(getChildByName("texT"));
-			loaderInfo.addEventListener(Event.INIT, onInit);
+			textfield.text = Text;
 			addEventListener(MouseEvent.MOUSE_OVER, wTextEnter);
 			addEventListener(MouseEvent.MOUSE_OUT, wTextExit);
-		}
-		
-		public function onInit(e:Event) {
-			textfield.text = Text;
 		}
 		
 		public function wTextEnter (e:MouseEvent){

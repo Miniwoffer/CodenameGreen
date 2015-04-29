@@ -72,7 +72,7 @@
 				addChild(wep);
 				weapons.push(wep);
 			}
-			Main.getMain().addChild(this);
+			Main.getMain().addChildAt(this,1);
 		}
 		override public function update(e:Event){
 			super.update(e);
