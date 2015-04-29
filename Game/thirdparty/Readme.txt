@@ -1,1 +1,1 @@
-Her ligger alle script som ikke ble laget av oss.
+CollisionTest.as er ikke laget av oss og vi takker dermed internett mennesket for at han/hun la den ut
