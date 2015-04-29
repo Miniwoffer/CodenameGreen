@@ -37,7 +37,7 @@
 			musicChannel.stop();
 			currentTrack = soundTrack;
 			lastPosition = 0;
-			musicChannel = currentTrack.play();
+			start(null);
 		}
 
 		static function start (e:Event){
@@ -57,6 +57,7 @@
 			musicChannel = currentTrack.play(lastPosition);
 			Main.getMain().soundMC.playButton.visible = false;
 			Main.getMain().soundMC.pauseButton.visible = true;
+			musicChannel.addEventListener(Event.SOUND_COMPLETE, start);
 		}
 		 
 	}
