@@ -4,7 +4,7 @@
 	import flash.events.MouseEvent;
 	import scripts.Main;
 	import scripts.Player;
-	
+	import scripts.MusicScript;
 	
 	public class Playbutton extends SimpleButton {
 		
@@ -17,6 +17,9 @@
 		{
 			Main.getMain().player = new Player();
 			Main.getMain().gotoAndStop(2);
+	
+			//MusicScript.setCurrentTrack(MusicScript.idleSound);
+			
 		}
 	}
 	
