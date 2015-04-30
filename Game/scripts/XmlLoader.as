@@ -40,6 +40,7 @@
 			//ber imageLoader laste in alle bilder under Weapons
 			for(var j:int = 0; j < xmlData[0].weapons.children().length(); j++){
 				xmlData[0].weapons.weapon[j].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.weapons) + xmlData[0].weapons.weapon[j].imgname);
+				xmlData[0].weapons.weapon[j].bullet.imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.bullets) + xmlData[0].weapons.weapon[j].bullet.imgname);
 			}
 		}
 		

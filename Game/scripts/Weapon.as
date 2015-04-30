@@ -2,10 +2,12 @@
 {
 	import flash.display.Bitmap;
 	import flash.display.MovieClip;
-	import scripts.GameObject;
 	import flash.events.Event;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	
+	import scripts.GameObject;
+	import scripts.bullets.Projectile;
 
 	public class Weapon extends MovieClip
 	{
@@ -17,7 +19,6 @@
 		//3 = Projectile spread?
 		var rotationMovment:Number;
 		var orgRot:Number;
-		var bullet:Bullet;
 		var targetRot:Number;
 		var rotSpeed:Number;
 		var weaponId:int;
@@ -29,10 +30,12 @@
 			rotSpeed = speed;
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
 			xmlData = xmlData[0].weapons.weapon[weaponid];
+			
+			weaponType = typeNameToId(xmlData.type);			
+			
 			image = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
 			image.scaleX = size;
 			image.scaleY = size;
-			bullet = new Bullet(weaponid);
 			var center:Number = image.height / 2;
 			x = posX;
 			y = posY;
@@ -76,9 +79,25 @@
 			switch(weaponType)
 			{
 				case 0:
-				Main.getMain().addChild(new Bullet(weaponId));
+				Main.getMain().addChild(new Projectile(weaponId));
 				break;
 			}
+		}
+		public static function typeNameToId(weaponTypeName:String):int
+		{
+			var ret:int = -1;
+			switch(weaponTypeName)
+			{
+				case "Projectile":
+					ret = 0;
+					break;
+				default:
+					if(Main.getMain().debug)
+						trace("Unknown weapon name \"" + weaponTypeName+"\"");
+					break;
+					
+			}
+			return ret;
 		}
 	}
 

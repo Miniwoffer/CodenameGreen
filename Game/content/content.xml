@@ -3,7 +3,7 @@
         <worldgen>
             <mapsize>20000</mapsize>
             <density><!-- stars/plantes per 1000x1000 pixels -->
-                <stars>200</stars>
+                <stars>800</stars>
                 <planets>5</planets>
             </density>
             <stations>2</stations>
@@ -41,6 +41,7 @@
 			<shipflames>content/images/ship flames/</shipflames>
             <stars>content/images/stars/</stars>
             <planets>content/images/planets/</planets>
+            <bullets>content/images/bullets/</bullets>
 		</imgfolders>
 	</settings>
 	<ships>
@@ -104,29 +105,22 @@
 		</ship>
 	</ships>
 	<weapons>
-		<weapon>
-			<name>Gun One</name>
-			<imgname>gun1.png</imgname>
-			<bulletimg>bullet1.png</bulletimg>
-			<damage>10</damage>
-			<speed>200</speed>
-			<type>projectile</type>
-		</weapon>
         <weapon>
 			<name>Rail Gun</name>
 			<imgname>railgun.png</imgname>
-			<bulletimg>bullet1.png</bulletimg>
-			<damage>10</damage>
-			<speed>200</speed>
-			<type>projectile</type>
-		</weapon>
-		<weapon>
-			<name>Gun Two</name>
-			<imgname>gun2.png</imgname>
-			<bulletimg>bullet2.png</bulletimg>
-			<damage>7</damage>
-			<speed>300</speed>
-			<type>projectile</type>
+            
+			<bulletimg>railgun.png</bulletimg>
+            <hiteffect>explosion.png</hiteffect>
+            <type>Projectile</type>
+                <!-- 
+                Projectile
+                -->
+            <bullet>
+                <damage>50</damage>
+                <firerate>200</firerate>
+                <bulletspeed>6</bulletspeed>
+                <imgname>bullet1.png</imgname>
+            </bullet>
 		</weapon>
 	</weapons>
 </XML>

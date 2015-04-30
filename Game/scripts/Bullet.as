@@ -4,19 +4,26 @@ import scripts.Weapon;
 import flash.display.MovieClip;
 import flash.events.Event;
 import flash.display.Bitmap;
-	public class Bullet extends GameObject{
+	public class Bullet extends GameObject{	
 		var image:Bitmap;
-		var projectiletype:int;
+		var weaponType:int;
 		//-Projectile-Types-
-		//1 = Normal
-		//2 = Laser
+		//0 = Normal
+		//1 = Laser
 		var weapon:Weapon;
 		var speed:Number;
-		var dmg:Number;
+		var dmg:Number;	
 		var target:MovieClip;
 		public function Bullet(weaponid:int)
 		{
+			var xmlData:XMLList = Main.getMain().getXMLLoader().getXmlData().weapons.weapon[weaponid].bullet;
+
+			//xmlData = xmlData[0].weapons.weapon[weaponid].bullet;
+			image = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
+			addChild(image);
 			addEventListener(Event.ENTER_FRAME,enterFrame);
+			weaponType = Weapon.typeNameToId(xmlData.type);
+			
 		}
 		public function enterFrame(e:Event)
 		{
@@ -42,10 +49,10 @@ import flash.display.Bitmap;
 				var otherShip = (Ship)(other);
 				if(otherShip != null)
 				{
-					//TODO: make "boom pow sklaboosh" where they meet
+					//TODO: make "boom pow s	klaboosh" where they meet
 					//TODO: play sounds
 					otherShip.applyDmg(dmg);
-					if(projectiletype == 1)
+					if(weaponType == 0)
 						destroy();
 				}
 			}

@@ -123,6 +123,14 @@
 		public function getXMLLoader(): XmlLoader {
 			return xmlLoader;
 		}
+		public function getPlayer():Player
+		{
+			return player;
+		}
+		public function getShop():Shop
+		{
+			return shop;
+		}
 		public function spawnWorld(): void {
 			var xmlData = xmlLoader.getXmlData();
 			xmlData = xmlData[0].settings.worldgen;
@@ -135,7 +143,7 @@
 				planet.rotation = Math.random() * 360;
 				planet.x = Math.random() * xmlData.mapsize;
 				planet.y = Math.random() * xmlData.mapsize;
-				var randSize = (Math.random() * 0.5) + 0.2;
+				var randSize = (Math.random() * 0.25) + 0.1;
 				planet.scaleX = randSize;
 				planet.scaleY = randSize;
 				addChildAt(planet, 0);
@@ -145,7 +153,7 @@
 				star.rotation = Math.random() * 360;
 				star.x = Math.random() * xmlData.mapsize;
 				star.y = Math.random() * xmlData.mapsize;
-				randSize = (Math.random() * 0.5) + 0.2;
+				randSize = (Math.random() * 0.25) + 0.1;
 				star.scaleX = randSize;
 				star.scaleY = randSize;
 				addChildAt(star, 0);

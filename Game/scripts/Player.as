@@ -24,12 +24,17 @@
 			input.right = false;
 			input.left = false;
 			input.shoot = false;
-			myShip = new Ship(0,new Array(1,1,1));
+			myShip = new Ship(0,new Array(0,0,0));
 			Main.getMain().addChild(this);
 			// constructor code
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,kDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP,kUp);
 			addEventListener(Event.ENTER_FRAME,update);
+		}
+		public function setShip(shipID:int,weapons:Array)
+		{
+			myShip.die();
+			myShip = new Ship(shipID,weapons);
 		}
 		public function update(e:Event){
 			var main:Main = Main.getMain();
@@ -49,7 +54,7 @@
 			}
 			if(input.shoot)
 			{
-				
+				myShip.shoot();
 			}
 			var myRect:Rectangle = main.scrollRect;
 			myRect.x =  myShip.x-(stage.stageWidth/2);
