@@ -103,9 +103,13 @@
 		}
 		public function applyDmg(amount:int)
 		{
+			var doDmg:int = (amount)-(Math.random()*armor);
+			if(doDmg > 0)
+			{
 			health -= amount;
 			if(health <= 0)
 				die();
+			}
 			
 			
 		}

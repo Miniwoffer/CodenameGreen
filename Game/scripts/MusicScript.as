@@ -30,7 +30,9 @@
 		public function MusicScript() {
 			
 		}
-		
+		static public function getCurrentTrack ():Sound{
+			return currentTrack;
+		}
 		static public function setCurrentTrack (soundTrack:Sound){
 			musicChannel.stop();
 			currentTrack = soundTrack;

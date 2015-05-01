@@ -5,10 +5,12 @@
 	import flash.events.Event;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.media.Sound;
 
 	import scripts.GameObject;
 	import scripts.bullets.Projectile;
 	import flash.utils.Timer;
+	import flash.media.SoundTransform;
 
 	public class Weapon extends MovieClip
 	{
@@ -25,6 +27,8 @@
 		var weaponId:int;
 		var staticMount:Boolean;
 		var reloadTimer:Timer;
+		var sound:Sound;
+		var soundTrans:SoundTransform;
 		public function Weapon(size:Number,weaponid:int,posX:int,posY:int,rot:Number, speed:Number, movement:Number, staticmount:String)
 		{
 			staticMount = staticmount == "true";
@@ -32,7 +36,9 @@
 			rotSpeed = speed;
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
 			xmlData = xmlData[0].weapons.weapon[weaponid];
-
+			
+			sound = Main.getMain().getSoundLoader().getSound(xmlData.soundnum);
+			soundTrans = new SoundTransform(xmlData.soundvolum);
 			weaponType = typeNameToId(xmlData.type);
 
 			image = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
@@ -82,6 +88,7 @@
 			if (! reloadTimer.running)
 			{
 				var bullet:Bullet;
+				sound.play(0,0,soundTrans);
 				switch (weaponType)
 				{
 					case 0 :
