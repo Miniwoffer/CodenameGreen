@@ -29,7 +29,6 @@
 			for(var i:int = 0; i < xmlData[0].ships.children().length(); i++){
 				xmlData[0].ships.ship[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.ships) + xmlData[0].ships.ship[i].imgname);
 			}
-			trace(xmlData[0].settings.images.stars.children().length());
 			for(i = 0; i < xmlData[0].settings.worldgen.images.stars.children().length(); i++){
 				xmlData[0].settings.worldgen.images.stars.star[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.stars) + xmlData[0].settings.worldgen.images.stars.star[i].imgname);
 			}

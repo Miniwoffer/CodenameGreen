@@ -51,7 +51,7 @@
 			<imgname>TillenniumFighter.png</imgname>
 			<health>750</health>
 			<armor>25</armor>
-			<speed>10</speed>
+			<speed>5</speed>
             		<flames>
 				<flame>
 					<x>43</x>
@@ -84,7 +84,7 @@
 			<imgname>MjolnirDestroyer.png</imgname>
 			<health>800</health>
 			<armor>60</armor>
-			<speed>3</speed>
+			<speed>2</speed>
 			<mounts>
 				<mount>
 					<x>10</x>
@@ -120,10 +120,13 @@
             <bullet>
                 <damage>50</damage>
                 <imgname>bullet1.png</imgname>
+                <sound></sound>
                 <speed>30</speed>
                 <lifetime>500</lifetime>
                 <explosion>
                     <imgname>explosion1.png</imgname>
+                    <lifetime>100</lifetime>
+                    <sound></sound>
                 </explosion>
             </bullet>
 		</weapon>

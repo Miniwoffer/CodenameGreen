@@ -304,6 +304,13 @@
 		{
 			MouseHide.mouseDownHandler();
 		}
+		public function resetGame()
+		{
+			for(var i:int = 0; i < numChildren;i++)
+			{
+				removeChildAt(i);
+			}
+		}
 
 	}
 

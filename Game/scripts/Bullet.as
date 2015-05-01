@@ -11,6 +11,7 @@
 	public class Bullet extends GameObject
 	{
 		var image:Bitmap;
+		var weaponID:int;
 		var weaponType:int;
 		//-Projectile-Types-
 		//0 = Normal
@@ -22,6 +23,7 @@
 		var deathTimer:Timer;
 		public function Bullet(weaponid:int, wep:Weapon,size:Number)
 		{
+			weaponID = weaponid;
 			Main.getMain().addChild(this);
 			var xmlData:XMLList = Main.getMain().getXMLLoader().getXmlData().weapons.weapon[weaponid].bullet;
 			tag = "bullet";
@@ -57,6 +59,9 @@
 					//TODO: make "boom pow sklaboosh" where they meet
 					//TODO: play sounds
 					otherShip.applyDmg(dmg);
+					var explodo = new Explosion(weaponID,scaleX);
+					explodo.x = x;
+					explodo.y = y;
 					destroy(null);
 
 				}

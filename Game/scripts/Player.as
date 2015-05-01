@@ -19,10 +19,13 @@
 
 		public var myShip:Ship;
 		var input:Object;
-		var enemy:Ai;
+		var enemy:Array = new Array();
 		public function Player()
 		{
-			enemy = new Ai(1,new Array(0,0),0);
+			for(var i:int = 0; i < 10; i++)
+			{
+				enemy.push(new Ai(1,new Array(0,0),0,Math.random()*1000,Math.random()*1000));
+			}
 			input = new Object();
 			input.up = false;
 			input.down = false;
@@ -72,6 +75,10 @@
 				main.scrollRect = myRect;
 				var myTarget:Point = new Point(mouseX,mouseY);
 				myShip.setWeaponAimLocation(myTarget);
+			}
+			else
+			{
+				//stage.resetf
 			}
 		}
 		public function kDown(e:KeyboardEvent)

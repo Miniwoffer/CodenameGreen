@@ -21,7 +21,7 @@
 		var looseRange:int;
 		
 		var ship:Ship;
-		public function Ai(shipID:int, weapons:Array, stat:int = 4, detectRng:int = 600,attackRng:int = 500,stopRng:int = 300, loseRng:int = 1000) {
+		public function Ai(shipID:int, weapons:Array, stat:int = 4,locX:int = 0,locY:int = 0, detectRng:int = 600,attackRng:int = 500,stopRng:int = 300, loseRng:int = 1000) {
 			// constructor code
 			looseRange = loseRng;
 			detectRange = detectRng;
@@ -29,6 +29,8 @@
 			stopRange = stopRng;
 			ship = new Ship(shipID,weapons);
 			ship.addEventListener(Event.ENTER_FRAME,update);
+			ship.x = locX;
+			ship.y = locY;
 			//range = range;
 			aiStatus = stat;
 		}
@@ -48,7 +50,6 @@
 					ship.setWeaponAimLocation(playerLocation);
 					var rangeTtoPlayer:Number = Utilities.distahceTwoPoints(myLocation,playerLocation); 
 					var targetRot:Number = Utilities.getRotationTwoPoints(myLocation,playerLocation);
-					trace(rangeTtoPlayer);
 					var diffrence:Number = targetRot-ship.rotation;
 					if(Utilities.shortestClockDirection(ship.rotation,targetRot))
 					{
