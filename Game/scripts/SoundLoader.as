@@ -22,9 +22,7 @@
 		{
 			lasteKoo = new Array();
 			sounds = new Array();
-			loader = new Sound();
-			loader.addEventListener(Event.COMPLETE, loadSound);
-			loader.addEventListener(IOErrorEvent.IO_ERROR, failedSoundLoade);
+			//loader = new Sound();
 		}
 		public function addSound(url:String):int
 		{
@@ -41,8 +39,9 @@
 				return eksists;
 			}
 
-			startNext();
 			lasteKoo.push(url);
+			if(lasteKoo.length > 0 && loader == null)
+			   startNext();
 			//Legger sammen køens lengde og bildenes lengde og trekker fra en siden index starter på 0;
 			return lasteKoo.length+sounds.length-1;
 		}
@@ -70,15 +69,15 @@
 		{
 			trace(lasteKoo[0]+" loaded");
 			sounds.push([lasteKoo[0],loader]);
-			loader = new Sound();
 			lasteKoo.shift();
 			startNext();
-			loader.addEventListener(Event.COMPLETE, loadSound);
-			loader.addEventListener(IOErrorEvent.IO_ERROR, failedSoundLoade);
 
 		}
 		private function startNext():void
 		{
+			loader = new Sound();
+			loader.addEventListener(Event.COMPLETE, loadSound);
+			loader.addEventListener(IOErrorEvent.IO_ERROR, failedSoundLoade);
 			if (lasteKoo.length > 0)
 			{
 				loader.load(new URLRequest(lasteKoo[0]));

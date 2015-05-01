@@ -36,6 +36,10 @@
 				
 				xmlData[0].settings.worldgen.images.planets.planet[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.planets) + xmlData[0].settings.worldgen.images.planets.planet[i].imgname);
 			}
+			for(i = 0; i < xmlData[0].settings.worldgen.images.stations.children().length(); i++){
+				
+				xmlData[0].settings.worldgen.images.stations.station[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.stations) + xmlData[0].settings.worldgen.images.stations.station[i].imgname);
+			}
 			//ber imageLoader laste in alle bilder under Weapons
 			for(var j:int = 0; j < xmlData[0].weapons.children().length(); j++){
 				xmlData[0].weapons.weapon[j].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.weapons) + xmlData[0].weapons.weapon[j].imgname);
@@ -44,6 +48,9 @@
 				
 				xmlData[0].weapons.weapon[j].soundnum = mySoundLoader.addSound(String(xmlData[0].settings.soundfolders.weapons) + xmlData[0].weapons.weapon[j].soundname);
 				xmlData[0].weapons.weapon[j].bullet.explosion.soundnum = mySoundLoader.addSound(String(xmlData[0].settings.soundfolders.explosions) + xmlData[0].weapons.weapon[j].bullet.explosion.soundname);
+			}
+			for(i = 0; i < xmlData[0].settings.miscsounds.children().length(); i++){
+				xmlData[0].settings.miscsounds.sound[i].soundnum = mySoundLoader.addSound(String(xmlData[0].settings.soundfolders.misc) + xmlData[0].settings.miscsounds.sound[i].soundname);
 			}
 		}
 		

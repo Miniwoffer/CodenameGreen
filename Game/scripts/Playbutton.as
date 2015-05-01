@@ -15,10 +15,7 @@
 		}
 		function introIsPressed (e:MouseEvent)
 		{
-			Main.getMain().gotoAndStop(2);
-			Main.getMain().player = new Player();
-			Main.getMain().spawnWorld();
-			MusicScript.setCurrentTrack(MusicScript.idleSound);
+			Main.getMain().startGame();
 		}
 	}
 	

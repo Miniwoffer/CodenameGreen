@@ -5,7 +5,6 @@
 	import scripts.Player;
 	import scripts.Main;
 	import flash.geom.Point;
-
 	public class Ai  {
 		var aiStatus:int;
 		/*
@@ -19,10 +18,30 @@
 		var attackRange:int;
 		var stopRange:int;
 		var looseRange:int;
-		
+		static var ais:Array = new Array();
+		static function checkForEnemies(e:Event)
+		{
+			var agroEnemies:Boolean = false;
+			for(var i:int = 0; i <ais.length; i++)
+			{
+				if(ais[i].getAiStatus == 2 || ais[i].getAiStatus == 3)
+				{
+					agroEnemies = true;
+				}
+			}
+			if(!agroEnemies)
+				if(MusicScript.getCurrentTrack() != MusicScript.idleSound)
+					MusicScript.setCurrentTrack(MusicScript.idleSound);
+			
+		}
+		public function getAiStatus()
+		{
+			return aiStatus;
+		}
 		var ship:Ship;
 		public function Ai(shipID:int, weapons:Array, stat:int = 4,locX:int = 0,locY:int = 0, detectRng:int = 600,attackRng:int = 500,stopRng:int = 300, loseRng:int = 1000) {
 			// constructor code
+			ais.push(this);
 			looseRange = loseRng;
 			detectRange = detectRng;
 			attackRange = attackRng;
@@ -70,6 +89,7 @@
 					if(looseRange < rangeTtoPlayer)
 					{
 						aiStatus = 0;
+						checkForEnemies(null);
 					}
 				break;
 				case 3:

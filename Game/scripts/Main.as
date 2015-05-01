@@ -54,6 +54,7 @@
 			followcamMovieClips = new Array();
 			addFolowCamera(hud);
 			addChild(hud);
+			hud.visible = false;
 			gamepaused = new Boolean(false);
 			xmlLoader = new XmlLoader("content/content.xml");
 			soundLoader = new SoundLoader();
@@ -74,9 +75,17 @@
 			}
 			addEventListener(Event.ENTER_FRAME, frameEnter);
 
-			var shop = new Shop();
+			shop = new Shop();
 			shop.visible = false;
 			addChild(shop);
+		}
+		public function startGame()
+		{
+			hud.visible = true;
+			gotoAndStop(2);
+			player = new Player();
+			spawnWorld();
+			MusicScript.setCurrentTrack(MusicScript.idleSound);
 		}
 
 		//a Override for the addChild function so all GameObjects gets added to a seperate list that cheks for collision.
@@ -207,7 +216,6 @@
 			var xmlData = xmlLoader.getXmlData();
 			var bc:MovieClip = new MovieClip();
 			xmlData = xmlData[0].settings.worldgen;
-
 			var spawnMulti:int = xmlData.mapsize / 1000;
 			var stars:int = xmlData.density.stars * spawnMulti;
 			var planets:int = xmlData.density.planets * spawnMulti;
@@ -264,6 +272,11 @@
 					bitmap.y = mapsize*j;
 					addChildAt(bitmap,0);
 				}
+				
+			}
+			for(i = 0; i < xmlData.stations;i++)
+			{
+				addChildAt(new SpaceStation(Math.random()*xmlData.mapsize,Math.random()*xmlData.mapsize,0),0);
 			}
 			//addChildAt(bc,0);
 		}

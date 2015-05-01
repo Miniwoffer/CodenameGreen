@@ -9,6 +9,8 @@
 	import flash.geom.Point;
 	
 	public class Ship extends GameObject {
+		
+		
 		var shipName:String;
 		var health:int;
 		var maxHealth:int;
@@ -20,14 +22,18 @@
 		var move:Boolean;
 		
 		var flames:Array;
-
+		public var hpBar:hpbarsmall;
 		public function Ship(id:int,weps:Array) {
 			// constructor code
+			addEventListener(Event.EXIT_FRAME,exitUpdate);
 			scaleX = 0.6;
 			scaleY = 0.6;
 			tag = "ship";
 			ignore.push("ship");
-			
+			hpBar = new hpbarsmall();
+			hpBar.scaleX = 0.15;
+			hpBar.scaleY = 0.15;
+			Main.getMain().addChild(hpBar);
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
 			xmlData = xmlData[0].ships.ship[id];
 			var image:Bitmap = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
@@ -67,6 +73,14 @@
 				rotVelocity = speed/3;
 			if(rotVelocity < -speed/3)
 				rotVelocity = -speed/3;
+				
+		}
+		public function exitUpdate(e:Event)
+		{
+			var main:Main =  Main.getMain();
+			hpBar.x = x;
+			hpBar.y = y-60;
+			hpBar.smallHpBarVisual.width = (440/maxHealth)*health;
 		}
 		public function shoot()
 		{
@@ -116,6 +130,9 @@
 		public function die()
 		{
 			Main.getMain().removeChild(this);
+			Main.getMain().removeChild(hpBar);
+			Ai.checkForEnemies(null);
+			Main.getMain().getPlayer().addMoney(100);
 		}
 		override public function onCollision(other:GameObject)
 		{

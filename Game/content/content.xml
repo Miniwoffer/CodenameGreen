@@ -1,5 +1,10 @@
 <XML>
 	<settings>
+        <miscsounds>
+            <sound>
+                <soundname>money.mp3</soundname>
+            </sound>
+        </miscsounds>
         <worldgen>
             <mapsize>2000</mapsize>
             <density><!-- stars/plantes per 1000x1000 pixels -->
@@ -31,7 +36,9 @@
                     </planet>
                 </planets>
                 <stations>
-                    <station></station>
+                    <station>
+                        <imgname>station1.png</imgname>
+                    </station>
                 </stations>
             </images>
         </worldgen>
@@ -43,6 +50,7 @@
             <planets>content/images/planets/</planets>
             <bullets>content/images/bullets/</bullets>
             <explosions>content/images/explosions/</explosions>
+            <stations>content/images/spacestations/</stations>
 		</imgfolders>
         <soundfolders>
             <ships>content/sounds/ships/</ships>
@@ -52,7 +60,7 @@
             <planets>content/sounds/planets/</planets>
             <bullets>content/sounds/bullets/</bullets>
             <explosions>content/sounds/explosions/</explosions>
-        
+            <misc>content/sounds/misc/</misc>
         </soundfolders>
 	</settings>
 	<ships>
@@ -171,7 +179,7 @@
                     <imgname>explosion1.png</imgname>
                     <lifetime>300</lifetime>
                     <soundname>explosion.mp3</soundname>
-                    <soundvolum>0.2</soundvolum>
+                    <soundvolum>1.0</soundvolum>
                 </explosion>
             </bullet>
 		</weapon>

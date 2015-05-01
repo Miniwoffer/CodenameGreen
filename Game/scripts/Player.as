@@ -13,6 +13,7 @@
 	import scripts.Ai;
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
+	import flash.media.Sound;
 
 	public class Player extends MovieClip
 	{
@@ -20,12 +21,13 @@
 		public var myShip:Ship;
 		var input:Object;
 		var enemy:Array = new Array();
+		public var closeToShop:Boolean = false;
 		public function Player()
 		{
 			/*
 			for(var i:int = 0; i < 10; i++)
 			{
-				enemy.push(new Ai(Math.random()*2,new Array(0,0),0,Math.random()*1000,Math.random()*1000));
+			enemy.push(new Ai(Math.random()*2,new Array(0,0),0,Math.random()*1000,Math.random()*1000));
 			}*/
 			enemy.push(new Ai(Math.random()*2,new Array(0,0),0,1000,1000));
 			input = new Object();
@@ -34,7 +36,9 @@
 			input.right = false;
 			input.left = false;
 			input.shoot = false;
+			input.shop = false;
 			myShip = new Ship(2,new Array(0,0));
+			myShip.hpBar.visible = false;
 			Main.getMain().addChild(this);
 			// constructor code;
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,kDown);
@@ -52,9 +56,21 @@
 		}
 		public function update(e:Event)
 		{
+
 			var main:Main = Main.getMain();
 			if (! main.gamepaused && myShip != null)
 			{
+				var shop:MovieClip = main.getShop();
+				if (closeToShop && input.shop)
+				{
+					shop.visible = true;
+					main.gamepaused = true;
+				}
+				else
+				{
+					shop.visible = false;
+				}
+				closeToShop = false;
 				if (input.up)
 				{
 					myShip.forward();
@@ -110,6 +126,9 @@
 				case Keyboard.SPACE :
 					input.shoot = true;
 					break;
+				case Keyboard.F :
+					input.shop = true;
+					break;
 
 			}
 		}
@@ -140,30 +159,42 @@
 				case Keyboard.SPACE :
 					input.shoot = false;
 					break;
+				case Keyboard.F :
+					input.shop = false;
+					break;
 
 
 			}
 		}
 
 
-		var playerCurrency:Number = 0;
+		var playerCurrency:int = 0;
 
 		public function removeMoney(amount:int)
 		{
+			var mymeonySound:Sound = Main.getMain().getSoundLoader().getSound(Main.getMain().getXMLLoader().getXmlData().settings.miscsounds.sound[0].soundnum);
+			mymeonySound.play();
 			playerCurrency -=  amount;
 
 			if (playerCurrency < 0)
 			{
 				playerCurrency = 0;
 			}
-
+			updateMoneyDisp();
 		}
 
 		public function addMoney(amount:int)
 		{
+			var mymeonySound:Sound = Main.getMain().getSoundLoader().getSound(Main.getMain().getXMLLoader().getXmlData().settings.miscsounds.sound[0].soundnum);
+			mymeonySound.play();
 			playerCurrency +=  amount;
+			updateMoneyDisp();
 		}
 
+		public function updateMoneyDisp()
+		{
+			Main.getMain().getHud().moneyDisp.text = "" + playerCurrency;
+		}
 	}
 
 }
