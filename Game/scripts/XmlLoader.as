@@ -41,6 +41,7 @@
 			for(var j:int = 0; j < xmlData[0].weapons.children().length(); j++){
 				xmlData[0].weapons.weapon[j].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.weapons) + xmlData[0].weapons.weapon[j].imgname);
 				xmlData[0].weapons.weapon[j].bullet.imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.bullets) + xmlData[0].weapons.weapon[j].bullet.imgname);
+				xmlData[0].weapons.weapon[j].bullet.explosion.imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.explosions) + xmlData[0].weapons.weapon[j].bullet.explosion.imgname);
 			}
 		}
 		

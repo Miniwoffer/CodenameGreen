@@ -11,12 +11,12 @@
 	public class Ship extends GameObject {
 		var shipName:String;
 		var health:int;
+		var maxHealth:int;
 		var armor:int;
 		var speed:int;
 		var weapons:Array;
 		var velocity:Number;
 		var rotVelocity:Number;
-		var currentHealth:int;
 		var move:Boolean;
 		
 		var flames:Array;
@@ -38,9 +38,9 @@
 			addChild(image);
 			shipName = xmlData.name;
 			health = xmlData.health;
+			maxHealth = health;
 			armor = xmlData.armor;
 			speed = xmlData.speed;
-			currentHealth = health;
 			weapons = new Array();
 			flames = new Array();
 			for(var i:int = 0;i < weps.length && i < xmlData.mounts.children().length();i++)
@@ -103,8 +103,8 @@
 		}
 		public function applyDmg(amount:int)
 		{
-			currentHealth -= amount;
-			if(currentHealth > 0)
+			health -= amount;
+			if(health <= 0)
 				die();
 			
 			

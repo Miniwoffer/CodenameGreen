@@ -1,10 +1,10 @@
 <XML>
 	<settings>
         <worldgen>
-            <mapsize>20000</mapsize>
+            <mapsize>2000</mapsize>
             <density><!-- stars/plantes per 1000x1000 pixels -->
-                <stars>800</stars>
-                <planets>5</planets>
+                <stars>400</stars>
+                <planets>2</planets>
             </density>
             <stations>2</stations>
             <images>
@@ -42,15 +42,16 @@
             <stars>content/images/stars/</stars>
             <planets>content/images/planets/</planets>
             <bullets>content/images/bullets/</bullets>
+            <explosions>content/images/explosions/</explosions>
 		</imgfolders>
 	</settings>
 	<ships>
 		<ship>
 			<name>Tillennium Fighter</name>
 			<imgname>TillenniumFighter.png</imgname>
-			<health>75</health>
+			<health>750</health>
 			<armor>25</armor>
-			<speed>20</speed>
+			<speed>10</speed>
             		<flames>
 				<flame>
 					<x>43</x>
@@ -66,7 +67,7 @@
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>0.4</size>
-                    <static>true</static>
+                    <static>false</static>
 				</mount>
 				<mount>
 					<x>-5</x>
@@ -74,16 +75,16 @@
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>0.4</size>
-                    <static>true</static>
+                    <static>false</static>
 				</mount>
 			</mounts>
 		</ship>
 		<ship>
 			<name>Mjolnir Destroyer</name>
 			<imgname>MjolnirDestroyer.png</imgname>
-			<health>80</health>
+			<health>800</health>
 			<armor>60</armor>
-			<speed>6</speed>
+			<speed>3</speed>
 			<mounts>
 				<mount>
 					<x>10</x>
@@ -91,7 +92,7 @@
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>1</size>
-                    <static>false</static>
+                    <static>true</static>
 				</mount>
 				<mount>
 					<x>10</x>
@@ -99,7 +100,7 @@
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>1</size>
-                    <static>false</static>
+                    <static>true</static>
 				</mount>
 			</mounts>
 		</ship>
@@ -112,14 +113,18 @@
 			<bulletimg>railgun.png</bulletimg>
             <hiteffect>explosion.png</hiteffect>
             <type>Projectile</type>
-                <!-- 
+                    <!-- 
                 Projectile
                 -->
+            <firerate>100</firerate><!-- Higher = faster -->
             <bullet>
                 <damage>50</damage>
-                <firerate>200</firerate>
-                <bulletspeed>6</bulletspeed>
                 <imgname>bullet1.png</imgname>
+                <speed>30</speed>
+                <lifetime>500</lifetime>
+                <explosion>
+                    <imgname>explosion1.png</imgname>
+                </explosion>
             </bullet>
 		</weapon>
 	</weapons>

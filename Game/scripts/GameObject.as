@@ -20,6 +20,7 @@
 			if(lastisCol == false && isInCol == true)
 				onExitCollision(otherCol);
 			lastisCol = false;
+			
 		}
 		public function onCollision(other:GameObject){
 			if(!isInCol)
@@ -34,6 +35,10 @@
 			
 		}
 		public function onExitCollision(other:GameObject){
+			
+		}
+		public function destroy(e:Event)
+		{
 			
 		}
 	}

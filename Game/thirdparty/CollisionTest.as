@@ -14,6 +14,7 @@ package thirdparty
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
+	
 	public class CollisionTest 
 	{
 		// vars
@@ -67,7 +68,7 @@ package thirdparty
 		 * @return	Collision True/False
 		 */
 		public function complex(clip1:DisplayObjectContainer, clip2:DisplayObjectContainer):Boolean{ 
-		_returnValue = false;
+
 		
 		_twoRectangle = clip1.getBounds(clip1);// get bounds will only get it’s none rotate x,y,width,height
 		_oneOffset = clip1.transform.matrix; 
