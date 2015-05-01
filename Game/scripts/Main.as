@@ -31,6 +31,7 @@
 
 		private var xmlLoader:XmlLoader;
 		private var imageLoader:ImageLoader;
+		private var soundLoader:SoundLoader;
 
 		public var gamepaused:Boolean;
 		static var main:Main;
@@ -55,6 +56,7 @@
 			addChild(hud);
 			gamepaused = new Boolean(false);
 			xmlLoader = new XmlLoader("content/content.xml");
+			soundLoader = new SoundLoader();
 			imageLoader = new ImageLoader();
 			timerMouseHide.addEventListener(TimerEvent.TIMER_COMPLETE, mHide);
 			gameObjects = new Array();
@@ -187,6 +189,10 @@
 		public function getXMLLoader():XmlLoader
 		{
 			return xmlLoader;
+		}
+		public function getSoundLoader():SoundLoader
+		{
+			return soundLoader;
 		}
 		public function getPlayer():Player
 		{

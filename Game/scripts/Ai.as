@@ -90,6 +90,8 @@
 			if(Utilities.distahceTwoPoints(playerLocation,new Point(ship.x,ship.y)) < detectRange)
 			{
 				aiStatus = 2;
+				if(MusicScript.getCurrentTrack() != MusicScript.epicSound)
+					MusicScript.setCurrentTrack(MusicScript.epicSound);
 			}
 		}
 

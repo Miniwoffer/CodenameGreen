@@ -24,7 +24,7 @@
 			
 			xmlData = new XML(xmlLoader.data);
 			var mymimgLoader:ImageLoader = Main.getMain().getImageLoader();
-			
+			var mySoundLoader:SoundLoader = Main.getMain().getSoundLoader();
 			//ber imageLoader laste in alle bilder under Ships
 			for(var i:int = 0; i < xmlData[0].ships.children().length(); i++){
 				xmlData[0].ships.ship[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.ships) + xmlData[0].ships.ship[i].imgname);
@@ -41,6 +41,9 @@
 				xmlData[0].weapons.weapon[j].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.weapons) + xmlData[0].weapons.weapon[j].imgname);
 				xmlData[0].weapons.weapon[j].bullet.imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.bullets) + xmlData[0].weapons.weapon[j].bullet.imgname);
 				xmlData[0].weapons.weapon[j].bullet.explosion.imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.explosions) + xmlData[0].weapons.weapon[j].bullet.explosion.imgname);
+				
+				xmlData[0].weapons.weapon[j].soundnum = mySoundLoader.addSound(String(xmlData[0].settings.soundfolders.weapons) + xmlData[0].weapons.weapon[j].soundname);
+				xmlData[0].weapons.weapon[j].bullet.explosion.soundnum = mySoundLoader.addSound(String(xmlData[0].settings.soundfolders.explosions) + xmlData[0].weapons.weapon[j].bullet.explosion.soundname);
 			}
 		}
 		

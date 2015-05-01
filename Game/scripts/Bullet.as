@@ -7,6 +7,7 @@
 	import flash.display.Bitmap;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
+	import flash.media.Sound;
 
 	public class Bullet extends GameObject
 	{

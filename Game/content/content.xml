@@ -44,6 +44,16 @@
             <bullets>content/images/bullets/</bullets>
             <explosions>content/images/explosions/</explosions>
 		</imgfolders>
+        <soundfolders>
+            <ships>content/sounds/ships/</ships>
+			<weapons>content/sounds/weapons/</weapons>
+			<shipflames>content/sounds/ship flames/</shipflames>
+            <stars>content/sounds/stars/</stars>
+            <planets>content/sounds/planets/</planets>
+            <bullets>content/sounds/bullets/</bullets>
+            <explosions>content/sounds/explosions/</explosions>
+        
+        </soundfolders>
 	</settings>
 	<ships>
 		<ship>
@@ -51,40 +61,7 @@
 			<imgname>TillenniumFighter.png</imgname>
 			<health>750</health>
 			<armor>25</armor>
-			<speed>5</speed>
-            		<flames>
-				<flame>
-					<x>43</x>
-					<y>8</y>
-					<imgname>TFflame.png</imgname>
-					<numframes>2</numframes>
-				</flame>
-			</flames>
-			<mounts>
-				<mount>
-					<x>-5</x>
-					<y>-14</y>
-					<rot>0</rot>
-					<movement>0</movement>
-					<size>0.4</size>
-                    <static>false</static>
-				</mount>
-				<mount>
-					<x>-5</x>
-					<y>14</y>
-					<rot>0</rot>
-					<movement>0</movement>
-					<size>0.4</size>
-                    <static>false</static>
-				</mount>
-			</mounts>
-		</ship>
-		<ship>
-			<name>Armoire Massifica</name>
-			<imgname>ArmoireMassifica.png</imgname>
-			<health>350</health>
-			<armor>85</armor>
-			<speed>10</speed>
+			<speed>6</speed>
             		<flames>
 				<flame>
 					<x>43</x>
@@ -117,7 +94,7 @@
 			<imgname>MjolnirDestroyer.png</imgname>
 			<health>800</health>
 			<armor>60</armor>
-			<speed>2</speed>
+			<speed>1</speed>
 			<mounts>
 				<mount>
 					<x>10</x>
@@ -137,11 +114,46 @@
 				</mount>
 			</mounts>
 		</ship>
+		<ship>
+			<name>Armoire Massifica</name>
+			<imgname>ArmoireMassifica.png</imgname>
+			<health>350</health>
+			<armor>85</armor>
+			<speed>3</speed>
+            		<flames>
+				<flame>
+					<x>43</x>
+					<y>8</y>
+					<imgname>TFflame.png</imgname>
+					<numframes>2</numframes>
+				</flame>
+			</flames>
+			<mounts>
+				<mount>
+					<x>-5</x>
+					<y>-14</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.4</size>
+                    <static>true</static>
+				</mount>
+				<mount>
+					<x>-5</x>
+					<y>14</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.4</size>
+                    <static>true</static>
+				</mount>
+			</mounts>
+		</ship>
 	</ships>
 	<weapons>
         <weapon>
 			<name>Rail Gun</name>
 			<imgname>railgun.png</imgname>
+            <soundname>laser.mp3</soundname>
+            <soundvolum>0.2</soundvolum>
             
 			<bulletimg>railgun.png</bulletimg>
             <hiteffect>explosion.png</hiteffect>
@@ -149,17 +161,17 @@
                     <!-- 
                 Projectile
                 -->
-            <firerate>100</firerate><!-- Higher = faster -->
+            <firerate>200</firerate><!-- Higher = slower -->
             <bullet>
                 <damage>50</damage>
                 <imgname>bullet1.png</imgname>
-                <sound></sound>
-                <speed>30</speed>
-                <lifetime>500</lifetime>
+                <speed>5</speed>
+                <lifetime>3000</lifetime>
                 <explosion>
                     <imgname>explosion1.png</imgname>
-                    <lifetime>100</lifetime>
-                    <sound></sound>
+                    <lifetime>300</lifetime>
+                    <soundname>explosion.mp3</soundname>
+                    <soundvolum>0.2</soundvolum>
                 </explosion>
             </bullet>
 		</weapon>

@@ -4,6 +4,8 @@
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
 	import flash.display.MovieClip;
+	import flash.media.Sound;
+	import flash.media.SoundTransform;
 	
 	public class Explosion extends MovieClip {
 		var image:Bitmap;
@@ -12,7 +14,10 @@
 			scaleY = scale;
 			scaleX = scale;
 			var xmlData:XMLList = Main.getMain().getXMLLoader().getXmlData().weapons.weapon[weaponId].bullet.explosion;
-			image = Main.getMain().getImageLoader().getImage(xmlData.imgnum);;
+			image = Main.getMain().getImageLoader().getImage(xmlData.imgnum);
+			var sound:Sound = Main.getMain().getSoundLoader().getSound(xmlData.soundnum);
+			var soundTrans:SoundTransform = new SoundTransform(xmlData.soundvolum);
+			sound.play(0,0,soundTrans);
 			addChild(image);
 			Main.getMain().addChild(this);
 			deathTimer = new Timer(xmlData.lifetime,1);
