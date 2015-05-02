@@ -129,7 +129,7 @@
 		}
 		public function die()
 		{
-			Main.getMain().removeChild(this);
+			super.destroy(null);
 			Main.getMain().removeChild(hpBar);
 			Ai.checkForEnemies(null);
 			Main.getMain().getPlayer().addMoney(100);

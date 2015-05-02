@@ -106,11 +106,11 @@
 			<mounts>
 				<mount>
 					<x>10</x>
-					<y>30</y>
+					<y>60</y>
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>1</size>
-                    <static>true</static>
+                    <static>false</static>
 				</mount>
 				<mount>
 					<x>10</x>
@@ -118,7 +118,23 @@
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>1</size>
-                    <static>true</static>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>10</x>
+					<y>30</y>
+					<rot>0</rot>
+					<movement>0</movement>
+					<size>1</size>
+                    <static>false</static>
+				</mount>
+				<mount>
+					<x>10</x>
+					<y>-60</y>
+					<rot>0</rot>
+					<movement>0</movement>
+					<size>1</size>
+                    <static>false</static>
 				</mount>
 			</mounts>
 		</ship>
@@ -157,14 +173,15 @@
 		</ship>
 	</ships>
 	<weapons>
+        
+        
         <weapon>
-			<name>Rail Gun</name>
-			<imgname>railgun.png</imgname>
+			<name>Red laser</name>
+			<imgname>Laserpewpew.png</imgname>
             <soundname>laser.mp3</soundname>
             <soundvolum>0.2</soundvolum>
             
-			<bulletimg>railgun.png</bulletimg>
-            <hiteffect>explosion.png</hiteffect>
+            
             <type>Projectile</type>
                     <!-- 
                 Projectile
@@ -172,11 +189,94 @@
             <firerate>200</firerate><!-- Higher = slower -->
             <bullet>
                 <damage>50</damage>
-                <imgname>bullet1.png</imgname>
+                <imgname>LaserpewpewBullet.png</imgname>
                 <speed>5</speed>
                 <lifetime>3000</lifetime>
+                <explodeondeath>false</explodeondeath>
                 <explosion>
-                    <imgname>explosion1.png</imgname>
+                    <imgname>laserhit.png</imgname>
+                    <lifetime>300</lifetime>
+                    <soundname>explosion.mp3</soundname>
+                    <soundvolum>1.0</soundvolum>
+                </explosion>
+            </bullet>
+		</weapon>
+        
+        
+        <weapon>
+			<name>Rocket Lunch</name>
+			<imgname>RocketLunch.png</imgname>
+            <soundname>RocketLunch.mp3</soundname>
+            <soundvolum>1.0</soundvolum>
+            
+			<bulletimg>RocketLunch.png</bulletimg>
+            
+            <type>Projectile</type>
+                    <!-- 
+                Projectile
+                -->
+            <firerate>1500</firerate><!-- Higher = slower -->
+            <bullet>
+                <damage>500</damage>
+                <imgname>RocketLunchBullet.png</imgname>
+                <speed>2</speed>
+                <lifetime>5000</lifetime>
+                <explodeondeath>true</explodeondeath>
+                <explosion>
+                    <imgname>nonLaserHit.png</imgname>
+                    <lifetime>300</lifetime>
+                    <soundname>explosion.mp3</soundname>
+                    <soundvolum>1.0</soundvolum>
+                </explosion>
+            </bullet>
+		</weapon>
+        
+        
+        <weapon>
+			<name>Rail Gun</name>
+			<imgname>railgun.png</imgname>
+            <soundname>Railgun.mp3</soundname>
+            <soundvolum>1.0</soundvolum>
+            <type>Projectile</type>
+                    <!-- 
+                Projectile
+                -->
+            <firerate>2000</firerate><!-- Higher = slower -->
+            <bullet>
+                <damage>100</damage>
+                <imgname>railgun.png</imgname>
+                <speed>40</speed>
+                <lifetime>5000</lifetime>
+                <explodeondeath>false</explodeondeath>
+                <explosion>
+                    <imgname>railgunhit.png</imgname>
+                    <lifetime>300</lifetime>
+                    <soundname>explosion.mp3</soundname>
+                    <soundvolum>1.0</soundvolum>
+                </explosion>
+            </bullet>
+		</weapon>
+        
+        <weapon>
+			<name>Dual barreld Cannon</name>
+			<imgname>DuoCannon.png</imgname>
+            <soundname>DuoCannon.mp3</soundname>
+            <soundvolum>1.0</soundvolum>
+            
+            
+            <type>Projectile</type>
+                    <!-- 
+                Projectile
+                -->
+            <firerate>500</firerate><!-- Higher = slower -->
+            <bullet>
+                <damage>600</damage>
+                <imgname>DuoCannonBullets.png</imgname>
+                <speed>10</speed>
+                <lifetime>5000</lifetime>
+                <explodeondeath>false</explodeondeath>
+                <explosion>
+                    <imgname>nonLaserHit.png</imgname>
                     <lifetime>300</lifetime>
                     <soundname>explosion.mp3</soundname>
                     <soundvolum>1.0</soundvolum>

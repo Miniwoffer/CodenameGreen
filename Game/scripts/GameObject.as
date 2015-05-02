@@ -11,6 +11,7 @@
 		
 		public function GameObject() {
 			// constructor code
+			Main.getMain().addChild(this);
 			addEventListener(Event.ENTER_FRAME,update);
 		}
 		
@@ -39,7 +40,8 @@
 		}
 		public function destroy(e:Event)
 		{
-			
+			if(Main.getMain().contains(this))
+				Main.getMain().removeChild(this);
 		}
 	}
 	

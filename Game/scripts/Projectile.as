@@ -1,4 +1,4 @@
-﻿package scripts.bullets  {
+﻿package scripts  {
 	import scripts.Bullet;
 	import scripts.Weapon;
 	import scripts.GameObject;
@@ -15,7 +15,6 @@
 		var explodeOnDeath:Boolean;
 		public function Projectile(weaponid:int,wep:Weapon,size:Number) {
 			super(weaponid,wep,size);
-			var main:Main = Main.getMain();
 			var xmlData:XMLList = Main.getMain().getXMLLoader().getXmlData().weapons.weapon[weaponid].bullet;
 			
 			speed = xmlData.speed;
