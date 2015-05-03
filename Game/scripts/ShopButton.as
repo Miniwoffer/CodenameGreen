@@ -24,6 +24,10 @@
 			addEventListener(MouseEvent.MOUSE_OVER, wTextEnter);
 			addEventListener(MouseEvent.MOUSE_OUT, wTextExit);
 		}
+		public function updateText()
+		{
+			textfield.text = Text;
+		}
 		
 		public function wTextEnter (e:MouseEvent){
 			width += 106;

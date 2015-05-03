@@ -37,7 +37,7 @@
 			input.left = false;
 			input.shoot = false;
 			input.shop = false;
-			myShip = new Ship(1,new Array(1,1,1,1));
+			myShip = new Ship(0,new Array(2,2,2,2));
 			myShip.hpBar.visible = false;
 			Main.getMain().addChild(this);
 			// constructor code;
