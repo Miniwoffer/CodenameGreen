@@ -66,10 +66,11 @@
 	<ships>
 		<ship>
 			<name>Tillennium Fighter</name>
+            <price>300</price>
 			<imgname>TillenniumFighter.png</imgname>
-			<health>750</health>
+			<health>1000</health>
 			<armor>25</armor>
-			<speed>6</speed>
+			<speed>4</speed>
             		<flames>
 				<flame>
 					<x>43</x>
@@ -82,25 +83,35 @@
 				<mount>
 					<x>-5</x>
 					<y>-14</y>
-					<rot>0</rot>
+					<rot>90</rot>
 					<movement>0</movement>
 					<size>0.4</size>
-                    <static>false</static>
+                    <static>true</static>
 				</mount>
 				<mount>
 					<x>-5</x>
 					<y>14</y>
+					<rot>90</rot>
+					<movement>0</movement>
+					<size>0.4</size>
+                    <static>true</static>
+				</mount>
+                <mount>
+					<x>5</x>
+					<y>0</y>
 					<rot>0</rot>
 					<movement>0</movement>
 					<size>0.4</size>
                     <static>false</static>
+                    
 				</mount>
 			</mounts>
 		</ship>
 		<ship>
 			<name>Mjolnir Destroyer</name>
+            <price>1100</price>
 			<imgname>MjolnirDestroyer.png</imgname>
-			<health>800</health>
+			<health>4000</health>
 			<armor>60</armor>
 			<speed>1</speed>
 			<mounts>
@@ -140,10 +151,12 @@
 		</ship>
 		<ship>
 			<name>Armoire Massifica</name>
+            <price>700</price>
 			<imgname>ArmoireMassifica.png</imgname>
-			<health>350</health>
+			<health>3500</health>
 			<armor>85</armor>
-			<speed>3</speed>
+            
+			<speed>2</speed>
             		<flames>
 				<flame>
 					<x>43</x>
@@ -177,6 +190,7 @@
         
         <weapon>
 			<name>Red laser</name>
+            <price>110</price>
 			<imgname>Laserpewpew.png</imgname>
             <soundname>laser.mp3</soundname>
             <soundvolum>0.2</soundvolum>
@@ -205,6 +219,7 @@
         
         <weapon>
 			<name>Rocket Lunch</name>
+            <price>500</price>
 			<imgname>RocketLunch.png</imgname>
             <soundname>RocketLunch.mp3</soundname>
             <soundvolum>1.0</soundvolum>
@@ -234,6 +249,7 @@
         
         <weapon>
 			<name>Rail Gun</name>
+            <price>240</price>
 			<imgname>railgun.png</imgname>
             <soundname>Railgun.mp3</soundname>
             <soundvolum>1.0</soundvolum>
@@ -259,10 +275,11 @@
         
         <weapon>
 			<name>Dual barreld Cannon</name>
+            <price>60</price>
 			<imgname>DuoCannon.png</imgname>
             <soundname>DuoCannon.mp3</soundname>
             <soundvolum>1.0</soundvolum>
-            
+
             
             <type>Projectile</type>
                     <!-- 

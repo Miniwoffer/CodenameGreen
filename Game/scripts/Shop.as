@@ -6,6 +6,10 @@
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import scripts.Player;
+	import flash.display.Bitmap;
+	import scripts.Main;
+	import scripts.ShopShipDisplay;
+	import flash.events.Event;
 
 	public class Shop extends MovieClip {
 		
@@ -13,17 +17,70 @@
 		var wepNumber = 0;
 		var shipNumber = 0;
 		var player:Player;
+		
+		
+		
+		var ssd:ShopShipDisplay;// O_O so fast---------
+		
+		
+		
 		public function setVisibility(bol:Boolean):void{
 			visible = bol;
 		}
 		public function Shop() {
-			Main.getMain().addFolowCamera(this);
+			ssd = new ShopShipDisplay();
+			addChild(ssd);
+			var main:Main = Main.getMain();
+			main.addFolowCamera(this);
+			var xmldata:XML = main.getXMLLoader().getXmlData()
+			
 			weaponText.addEventListener(MouseEvent.CLICK, weaponSelected);
 			shipText.addEventListener(MouseEvent.CLICK, shipSelected);
+			SelectButton.addEventListener(MouseEvent.CLICK, select);
+			exitButton.addEventListener(MouseEvent.CLICK, exit);
+			buyButton.addEventListener(MouseEvent.CLICK, buy);
+			
 			shipUp.addEventListener(MouseEvent.CLICK, shipCategoryUp);
 			shipDown.addEventListener(MouseEvent.CLICK, shipCategoryDown);
+			
+			
+			exitButton.Text = "Exit";
+			exitButton.updateText();
+			
+			SelectButton.Text = "Select";
+			SelectButton.updateText();
+			
+			weaponText.Text = "Weapons";
+			weaponText.updateText();
+			
+			shipText.Text = "Ships";
+			shipText.updateText();
+			
+			buyButton.Text = "Buy";
+			buyButton.updateText();
+			
+			
 		}
-		
+		function buy(e:Event)
+		{
+		}
+		function exit(e:Event)
+		{
+			setVisibility(false);
+		}
+		function select(e:Event)
+		{
+			if(isShipSelected)
+			{
+				ssd.setShip(shipNumber);				
+			}
+			else
+			{
+				ssd.setWeaponAtCurrentSlot(wepNumber);
+			}
+
+				
+		}
 		function weaponSelected(e:MouseEvent) {
 			//player = new Player();
 			isShipSelected = false;
