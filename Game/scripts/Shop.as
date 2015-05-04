@@ -9,6 +9,7 @@
 	import flash.display.Bitmap;
 	import scripts.Main;
 	import scripts.ShopShipDisplay;
+	import scripts.Quest;
 	import flash.events.Event;
 
 	public class Shop extends MovieClip {
@@ -41,7 +42,7 @@
 			SelectButton.addEventListener(MouseEvent.CLICK, select);
 			exitButton.addEventListener(MouseEvent.CLICK, exit);
 			buyButton.addEventListener(MouseEvent.CLICK, buy);
-			
+			questButton.addEventListener(MouseEvent.CLICK, getQuest);
 			shipUp.addEventListener(MouseEvent.CLICK, shipCategoryUp);
 			shipDown.addEventListener(MouseEvent.CLICK, shipCategoryDown);
 			
@@ -63,6 +64,17 @@
 			
 			
 		}
+		
+		function getQuest(e:MouseEvent){
+			if (!Quest.questGotten){
+				Quest.generateQuest();
+				Quest.questGotten = true;
+			}
+			else {
+				trace("Please,fk urself, u just got a quest...")
+			}
+		}
+		
 		function buy(e:Event)
 		{
 			if(Main.getMain().getPlayer().playerCurrency >= ssd.getPrice())

@@ -133,6 +133,10 @@
 			Main.getMain().removeChild(hpBar);
 			Ai.checkForEnemies(null);
 			Main.getMain().getPlayer().addMoney(100);
+			if(Quest.killQuestStarted){
+				Quest.killCounter++;
+				Quest.finishKillQuest();
+			}
 		}
 		override public function onCollision(other:GameObject)
 		{

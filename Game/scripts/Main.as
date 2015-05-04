@@ -16,6 +16,7 @@
 	import scripts.Ship;
 	import scripts.XmlLoader;
 	import scripts.MouseHide;
+	import scripts.Quest;
 	import flash.geom.Point;
 	import flash.geom.Matrix;
 	import flash.text.TextFieldAutoSize;
@@ -86,6 +87,7 @@
 			player = new Player();
 			spawnWorld();
 			MusicScript.setCurrentTrack(MusicScript.idleSound);
+			Quest.iniQuest();
 		}
 
 		//a Override for the addChild function so all GameObjects gets added to a seperate list that cheks for collision.
@@ -332,7 +334,7 @@
 			{
 				removeChildAt(i);
 			}
-		}
+		} 
 
 	}
 
