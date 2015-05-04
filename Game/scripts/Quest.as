@@ -38,6 +38,7 @@
 				killQuestStarted = false;
 				questGotten = false;
 				randomCashReward = int(Math.random()*250);
+				Main.getMain().getPlayer().addMoney(randomCashReward);
 				Main.getMain().hud.questText.text = "Good job pilot! Thanks for getting rid of those pesky people. Here is your reward - Cash: " + String(randomCashReward) + ".";
 			}
 			else{
@@ -47,6 +48,7 @@
 		
 		static public function startGetQuest(){
 			Main.getMain().hud.questText.text = "Damn it, a recent supplyship was destroyed enroute to the facility. We need someone to pick up its resources and deliver them back here. If you complete the task, we will give you a 2% cut from the total supply drop price.";
+			
 		}
 		
 		static public function finishGetQuest(){
