@@ -8,6 +8,7 @@
 	public class MoneyScript {
 		
 		public var playerCurrency:Number = 0;
+		getMain().getHud().moneyDisplay = playerCurrency;
 
 
 		public function MoneyScript() {
@@ -20,11 +21,13 @@
 			if(playerCurrency < 0){
 				playerCurrency = 0;
 			}
+			getMain().getHud().moneyDisplay = playerCurrency;			
 			
 		}
 		
 		public static function moneyGain(amount:int) {
 			playerCurrency += amount;
+			getMain().getHud().moneyDisplay = playerCurrency;
 		}
 		
 	}
