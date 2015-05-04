@@ -122,7 +122,10 @@
 					}
 				}
 			}
-			return super.removeChild(child);
+			if(contains(child))
+				return super.removeChild(child);
+				
+			return null;
 		}
 		public function getCameraCenter():Point
 		{

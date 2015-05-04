@@ -92,7 +92,7 @@
 				switch (weaponType)
 				{
 					case 0 :
-						bullet = new Bullet(weaponId,this,image.scaleX);
+						bullet = new Projectile(weaponId,this,image.scaleX);
 						break;
 				}
 				var center:Number = image.height / 2;
