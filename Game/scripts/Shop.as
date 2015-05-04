@@ -26,7 +26,9 @@
 		
 		public function setVisibility(bol:Boolean):void{
 			visible = bol;
+			Main.getMain().gamepaused = bol;
 		}
+		
 		public function Shop() {
 			ssd = new ShopShipDisplay();
 			addChild(ssd);

@@ -63,8 +63,7 @@
 				var shop:MovieClip = main.getShop();
 				if (closeToShop && input.shop)
 				{
-					shop.visible = true;
-					main.gamepaused = true;
+					shop.setVisibility(true);
 				}
 				else
 				{
