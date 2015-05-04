@@ -15,7 +15,6 @@
 			selected.visible = false;
 			mySSD = ssd;
 			mySSD.addChild(this);
-			trace("ITS ALIVE");
 			addEventListener(MouseEvent.CLICK,clicked);
 		}
 		function clicked(e:Event)

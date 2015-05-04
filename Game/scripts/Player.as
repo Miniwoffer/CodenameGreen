@@ -27,7 +27,7 @@
 			/*
 			for(var i:int = 0; i < 10; i++)
 			{
-			enemy.push(new Ai(Math.random()*2,new Array(0,0),0,Math.random()*1000,Math.random()*1000));
+			enemy.push(new Ai(Math.random()*2,new Array(Math.random()*2,Math.random()*2),0,Math.random()*1000,Math.random()*1000));
 			}*/
 			enemy.push(new Ai(Math.random()*2,new Array(0,0),0,1000,1000));
 			input = new Object();
