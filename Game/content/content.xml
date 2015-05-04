@@ -31,6 +31,9 @@
                      <planet>
                         <imgname>planet2.png</imgname>
                     </planet>
+					<planet>
+                        <imgname>planet3.png</imgname>
+                    </planet>
                      <planet>
                         <imgname>sun.png</imgname>
                     </planet>
