@@ -24,12 +24,12 @@
 		public var closeToShop:Boolean = false;
 		public function Player()
 		{
-			/*
+			var xmlData = Main.getMain().getXMLLoader().getXmlData().settings.worldgen;
+			
 			for(var i:int = 0; i < 10; i++)
 			{
-			enemy.push(new Ai(Math.random()*2,new Array(Math.random()*2,Math.random()*2),0,Math.random()*1000,Math.random()*1000));
-			}*/
-			enemy.push(new Ai(Math.random()*2,new Array(0,0),0,1000,1000));
+				enemy.push(new Ai(Math.random()*2,new Array(Math.random()*2,Math.random()*2),0,Math.random()*xmlData.mapsize,Math.random()*xmlData.mapsize));
+			}
 			input = new Object();
 			input.up = false;
 			input.down = false;
@@ -37,7 +37,9 @@
 			input.left = false;
 			input.shoot = false;
 			input.shop = false;
-			myShip = new Ship(0,new Array(2,2,2,2));
+			myShip = new Ship(0,new Array(-1,2,2,2));
+			myShip.x = xmlData.mapsize/2;
+			myShip.y = xmlData.mapsize/2;
 			myShip.hpBar.visible = false;
 			Main.getMain().addChild(this);
 			// constructor code;
@@ -47,8 +49,12 @@
 		}
 		public function setShip(shipID:int,weapons:Array)
 		{
-			myShip.die();
+			var lastShip:Ship = myShip;
 			myShip = new Ship(shipID,weapons);
+			myShip.x = lastShip.x;
+			myShip.y = lastShip.y;
+			myShip.rotation = lastShip.rotation;
+			lastShip.die();
 		}
 		public function getShip():Ship
 		{
@@ -56,7 +62,7 @@
 		}
 		public function update(e:Event)
 		{
-
+			var mapSize = Main.getMain().getXMLLoader().getXmlData().settings.worldgen.mapsize;
 			var main:Main = Main.getMain();
 			if (! main.gamepaused && myShip != null)
 			{
@@ -89,6 +95,11 @@
 				var myRect:Rectangle = main.scrollRect;
 				myRect.x =  myShip.x-(stage.stageWidth/2);
 				myRect.y =  myShip.y-(stage.stageHeight/2);
+				if(myRect.x < 0)myRect.x = 0;
+				if(myRect.y < 0)myRect.y = 0;
+				
+				if(myRect.x > mapSize-myRect.width)myRect.x = mapSize-myRect.width;
+				if(myRect.y > mapSize-myRect.height)myRect.y = mapSize-myRect.height;
 				main.scrollRect = myRect;
 				var myTarget:Point = new Point(mouseX,mouseY);
 				myShip.setWeaponAimLocation(myTarget);

@@ -50,10 +50,18 @@
 			}
 		}
 		override public function update(e:Event){
+			if(!Main.getMain().gamepaused){
+			if(!deathTimer.running)
+				deathTimer.start();
 			super.update(e);
 			var angle = rotation * Math.PI / 180;
 			x +=  speed * Math.cos(angle);
 			y +=  speed * Math.sin(angle);
+			}else
+			{
+				if(deathTimer.running)
+					deathTimer.stop();
+			}
 		}
 		override public function destroy(e:Event)
 		{

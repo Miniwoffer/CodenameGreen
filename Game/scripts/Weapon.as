@@ -8,7 +8,6 @@
 	import flash.media.Sound;
 
 	import scripts.GameObject;
-	import scripts.bullets.Projectile;
 	import flash.utils.Timer;
 	import flash.media.SoundTransform;
 

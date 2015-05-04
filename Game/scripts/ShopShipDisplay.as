@@ -39,13 +39,13 @@
 			return price;
 		}
 		
-		public function getShipAndWeapons(shipId:int,weaponId:Array):void
+		public function getShipAndWeapons(weaponId:Array):int
 		{
-			shipId = currentShip;
-						for(var i:int = 0 ; i < slots.length ; i++)
+			for(var i:int = 0 ; i < slots.length ; i++)
 			{
 				weaponId.push(slots[i].getWeapon());
 			}
+			return currentShip;
 		}
 		
 		public function ShopShipDisplay() {

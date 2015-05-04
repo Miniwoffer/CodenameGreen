@@ -67,7 +67,7 @@
 		//legger til bilde i arrayen
 		private function loadSound(e:Event):void
 		{
-			trace(lasteKoo[0]+" loaded");
+			if (Main.getMain().debug) trace(lasteKoo[0]+" loaded");
 			sounds.push([lasteKoo[0],loader]);
 			lasteKoo.shift();
 			startNext();

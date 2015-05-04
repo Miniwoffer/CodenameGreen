@@ -40,6 +40,10 @@
 				
 				xmlData[0].settings.worldgen.images.stations.station[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.stations) + xmlData[0].settings.worldgen.images.stations.station[i].imgname);
 			}
+			for(i = 0; i < xmlData[0].settings.worldgen.images.questitems.children().length(); i++){
+				
+				xmlData[0].settings.worldgen.images.questitems.item[i].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.questItems) + xmlData[0].settings.worldgen.images.questitems.item[i].imgname);
+			}
 			//ber imageLoader laste in alle bilder under Weapons
 			for(var j:int = 0; j < xmlData[0].weapons.children().length(); j++){
 				xmlData[0].weapons.weapon[j].imgnum = mymimgLoader.addImage(String(xmlData[0].settings.imgfolders.weapons) + xmlData[0].weapons.weapon[j].imgname);

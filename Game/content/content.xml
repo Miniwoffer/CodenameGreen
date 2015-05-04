@@ -6,7 +6,7 @@
             </sound>
         </miscsounds>
         <worldgen>
-            <mapsize>2000</mapsize>
+            <mapsize>10000</mapsize>
             <density><!-- stars/plantes per 1000x1000 pixels -->
                 <stars>400</stars>
                 <planets>2</planets>
@@ -43,16 +43,14 @@
                         <imgname>station.png</imgname>
                     </station>
                 </stations>
-				
-				<questItems>
-					<box>
+				<questitems>
+					<item>
 						<imgname>dropbox.png</imgname>
-					</box>
-					
-					<dropship>
+					</item>
+					<item>
 						<imgname>dropship.png</imgname>
-					</dropship>
-				</questItems>
+					</item>
+				</questitems>
             </images>
         </worldgen>
 		<imgfolders>
@@ -64,7 +62,7 @@
             <bullets>content/images/bullets/</bullets>
             <explosions>content/images/explosions/</explosions>
             <stations>content/images/spacestations/</stations>
-			<questItems>content/images/questItems</questItems>
+			<questItems>content/images/questItems/</questItems>
 		</imgfolders>
         <soundfolders>
             <ships>content/sounds/ships/</ships>

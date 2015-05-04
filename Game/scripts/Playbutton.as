@@ -8,7 +8,6 @@
 	
 	public class Playbutton extends SimpleButton {
 		
-		
 		public function Playbutton() 
 		{
 			addEventListener(MouseEvent.CLICK, introIsPressed);

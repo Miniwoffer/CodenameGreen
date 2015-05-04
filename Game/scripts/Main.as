@@ -38,7 +38,7 @@
 		static var main:Main;
 		public var player:Player;
 		public var shop:Shop;
-		public var hud:Hud = new Hud  ;
+		public var hud:Hud = new Hud;
 
 
 		static function getMain():Main
@@ -77,17 +77,25 @@
 			addEventListener(Event.ENTER_FRAME, frameEnter);
 
 			shop = new Shop();
-			//shop.visible = false;
+			shop.visible = false;
 			addChild(shop);
 		}
 		public function startGame()
 		{
 			hud.visible = true;
 			gotoAndStop(2);
-			player = new Player();
 			spawnWorld();
 			MusicScript.setCurrentTrack(MusicScript.idleSound);
 			Quest.iniQuest();
+			player = new Player();
+		}
+		public function endGame()
+		{
+			gamepaused = true;
+			var ends:endScreen = new endScreen();
+			addFolowCamera(ends);
+			addChild(ends);
+			
 		}
 
 		//a Override for the addChild function so all GameObjects gets added to a seperate list that cheks for collision.
@@ -147,6 +155,7 @@
 			{
 				followcamMovieClips[i].x = centerpnt.x;
 				followcamMovieClips[i].y = centerpnt.y;
+				setChildIndex(followcamMovieClips[i],numChildren-1);
 			}
 		}
 		public function getHud():Hud
@@ -275,13 +284,13 @@
 					bitmap.height = mapsize;
 					bitmap.x = mapsize*i;
 					bitmap.y = mapsize*j;
-					addChildAt(bitmap,0);
+					addChild(bitmap);
 				}
 				
 			}
 			for(i = 0; i < xmlData.stations;i++)
 			{
-				addChildAt(new SpaceStation(Math.random()*xmlData.mapsize,Math.random()*xmlData.mapsize,0),0);
+				addChild(new SpaceStation(Math.random()*xmlData.mapsize,Math.random()*xmlData.mapsize,0));
 			}
 			//addChildAt(bc,0);
 		}
@@ -290,8 +299,8 @@
 			
 			var xmlData = xmlLoader.getXmlData();
 			var bc2:MovieClip = new MovieClip();
-			var dropBox:Bitmap = imageLoader.getImage(xmlData.images.questdropbox.box[0]);
-			var dropShip:Bitmap = imageLoader.getImage(xmlData.images.questdropship.dropship[0]);
+			var dropBox:Bitmap = imageLoader.getImage(xmlData[0].settings.worldgen.images.questitems.item[0].imgnum);
+			var dropShip:Bitmap = imageLoader.getImage(xmlData[0].settings.worldgen.images.questitems.item[1].imgnum);
 			var questCoordinatex = Math.random() * xmlData.mapsize;
 			var questCoordinatey = Math.random() * xmlData.mapsize;
 				dropBox.rotation = Math.random() * 360;
@@ -302,6 +311,7 @@
 				dropBox.y = questCoordinatey + 100;
 				bc2.addChild(dropShip);
 				bc2.addChild(dropBox);
+				addChildAt(bc2,getChildIndex(player.getShip())-1);
 		}
 		
 		public function getImageLoader():ImageLoader

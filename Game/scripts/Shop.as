@@ -28,6 +28,7 @@
 		public function setVisibility(bol:Boolean):void{
 			visible = bol;
 			Main.getMain().gamepaused = bol;
+			parent.setChildIndex(this,parent.numChildren-1);
 		}
 		
 		public function Shop() {
@@ -81,11 +82,11 @@
 			{
 				Main.getMain().getPlayer().removeMoney(ssd.getPrice());
 				var arr:Array = new Array();
-				var ship:int = 0;
+				var ship:int = ssd.getShipAndWeapons(arr);
 				Main.getMain().getPlayer().setShip(ship,arr);
+				trace(ship+" " + arr); 
 				setVisibility(false);
 			}
-			trace("you aint got the cash yoo brotha");
 		}
 		function exit(e:Event)
 		{

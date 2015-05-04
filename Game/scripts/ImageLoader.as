@@ -15,6 +15,7 @@
 		//en to dimmensjonal array som inhholder Set med Bitmap og addresen den ble lastet in fra
 		var images:Array;
 		var loader:Loader;
+		public var done:Boolean = true;
 		
 		public function ImageLoader() {
 			lasteKoo = new Array();
@@ -27,6 +28,7 @@
 			var eksists:int = -1;
 			for(var i:int = 0; i < images.length;i++)
 			{
+				done = false;
 				if(images[i][0] == url)
 					eksists = i;
 			}
@@ -63,6 +65,7 @@
 		//legger til bilde i arrayen
 		private function loadImage(e:Event):void
 		{  
+			if (Main.getMain().debug) trace(lasteKoo[0]+" loaded");
 			images.push([lasteKoo[0],Bitmap(LoaderInfo(e.target).content)]);
 			lasteKoo.shift();
 			startNext();
@@ -70,8 +73,9 @@
 		}
 		private function startNext():void
 		{
-			if(lasteKoo.length > 0)
+			if(lasteKoo.length > 0){
 				loader.load(new URLRequest(lasteKoo[0]));
+			}else done = true;
 		}
 
 	}

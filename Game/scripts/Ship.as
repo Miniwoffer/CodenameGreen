@@ -19,12 +19,16 @@
 		var weapons:Array;
 		var velocity:Number;
 		var rotVelocity:Number;
-		var move:Boolean;
+		var move:Boolean;/**/
+		var myId:int;
 		
 		var flames:Array;
 		public var hpBar:hpbarsmall;
+		public function getID(){return myId;}
 		public function Ship(id:int,weps:Array) {
 			// constructor code
+			super();
+			myId = id;
 			addEventListener(Event.EXIT_FRAME,exitUpdate);
 			scaleX = 0.6;
 			scaleY = 0.6;
@@ -49,18 +53,23 @@
 			speed = xmlData.speed;
 			weapons = new Array();
 			flames = new Array();
+			velocity = 0;
+			rotVelocity = 0;
 			for(var i:int = 0;i < weps.length && i < xmlData.mounts.children().length();i++)
 			{
-				velocity = 0;
-				rotVelocity = 0;
+				if(weps[i]!= -1)
+				{
 				var wep:Weapon = new Weapon(xmlData.mounts.mount[i].size,weps[i],xmlData.mounts.mount[i].x,xmlData.mounts.mount[i].y,xmlData.mounts.mount[i].rot,xmlData.mounts.mount[i].speed,xmlData.mounts.mount[i].movement,xmlData.mounts.mount[i].static);
 				addChild(wep);
 				weapons.push(wep);
+				}
 			}
-			Main.getMain().addChildAt(this,1);
 		}
 		override public function update(e:Event){
 			super.update(e);
+			var mapSize = Main.getMain().getXMLLoader().getXmlData().settings.worldgen.mapsize;
+			if(!Main.getMain().gamepaused)
+			{
 			var angle =  rotation * Math.PI / 180;
 			x += velocity * Math.cos(angle);
 			y += velocity * Math.sin(angle);
@@ -73,7 +82,12 @@
 				rotVelocity = speed/3;
 			if(rotVelocity < -speed/3)
 				rotVelocity = -speed/3;
+			}
+				if(x < 0)x = 0;
+				if(y < 0)y = 0;
 				
+				if(x > mapSize)x = mapSize;
+				if(y > mapSize)y = mapSize;
 		}
 		public function exitUpdate(e:Event)
 		{
@@ -100,9 +114,9 @@
 		{
 			rotVelocity += speed/5;
 		}
-		public function getWeapon(slot:int):Weapon
+		public function getWeapons():Array
 		{
-			return null;
+			return weapons;
 		}
 		public function setWeapon(slot:int, wep:Weapon)
 		{
@@ -129,14 +143,18 @@
 		}
 		public function die()
 		{
-			super.destroy(null);
-			Main.getMain().removeChild(hpBar);
 			Ai.checkForEnemies(null);
 			Main.getMain().getPlayer().addMoney(100);
 			if(Quest.killQuestStarted){
 				Quest.killCounter++;
 				Quest.finishKillQuest();
 			}
+			if(this == Main.getMain().getPlayer().getShip())
+			{
+				Main.getMain().endGame();
+			}
+			super.destroy(null);
+			Main.getMain().removeChild(hpBar);
 		}
 		override public function onCollision(other:GameObject)
 		{
