@@ -5,9 +5,10 @@
 	public class Quest {
 		
 		static public var questGotten:Boolean = false;
-		static var killQuestStarted:Boolean = true;
+		static var killQuestStarted:Boolean = false;
 		static public var killCounter:int = 0;
 		static var randomCashReward:int = 0;
+		static public var dropGotten:Boolean = false;
 
 		public function Quest() {
 			// constructor code
@@ -18,7 +19,7 @@
 		}
 		
 		static public function generateQuest() {
-			var questNumber = int(Math.random());
+			var questNumber = int(Math.random()+1);
 			
 			if(questNumber == 0){
 				startKillQuest();
@@ -39,20 +40,26 @@
 				questGotten = false;
 				randomCashReward = int(Math.random()*250);
 				Main.getMain().getPlayer().addMoney(randomCashReward);
-				Main.getMain().hud.questText.text = "Good job pilot! Thanks for getting rid of those pesky people. Here is your reward - Cash: " + String(randomCashReward) + ".";
+				Main.getMain().hud.questText.text = "Good job pilot! Thanks for getting rid of those pesky people. Here is your reward - Spacergy: " + String(randomCashReward) + ".";
 			}
 			else{
-				Main.getMain().hud.questText.text = "Thanks for helping us out. Progress : " + String(killCounter) + "/20."
+				Main.getMain().hud.questText.text = "Thanks for helping us out, progress : " + String(killCounter) + "/20."
 			}
 		}
 		
 		static public function startGetQuest(){
 			Main.getMain().hud.questText.text = "Damn it, a recent supplyship was destroyed enroute to the facility. We need someone to pick up its resources and deliver them back here. If you complete the task, we will give you a 2% cut from the total supply drop price.";
-			
+			Main.getMain().generateDropQuest();
 		}
 		
 		static public function finishGetQuest(){
-			
+			if(dropGotten){
+				questGotten = false;
+				dropGotten = false;
+				randomCashReward = int(Math.random()*400);
+				Main.getMain().getPlayer().addMoney(randomCashReward);
+				Main.getMain().hud.questText.text = "Good job pilot! Thank you, we owe you one after getting us those supplies, they are really important for us. Like i said, here is your Spacergy : " + String(randomCashReward) + ".";
+			}
 		}
 
 	}

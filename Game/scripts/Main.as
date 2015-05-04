@@ -285,6 +285,25 @@
 			}
 			//addChildAt(bc,0);
 		}
+		
+		public function generateDropQuest(){
+			
+			var xmlData = xmlLoader.getXmlData();
+			var bc2:MovieClip = new MovieClip();
+			var dropBox:Bitmap = imageLoader.getImage(xmlData.images.questdropbox.box[0]);
+			var dropShip:Bitmap = imageLoader.getImage(xmlData.images.questdropship.dropship[0]);
+			var questCoordinatex = Math.random() * xmlData.mapsize;
+			var questCoordinatey = Math.random() * xmlData.mapsize;
+				dropBox.rotation = Math.random() * 360;
+				dropShip.rotation = Math.random() * 360;
+				dropShip.x = questCoordinatex;
+				dropShip.y = questCoordinatey;
+				dropBox.x = questCoordinatex + 100;
+				dropBox.y = questCoordinatey + 100;
+				bc2.addChild(dropShip);
+				bc2.addChild(dropBox);
+		}
+		
 		public function getImageLoader():ImageLoader
 		{
 			return imageLoader;

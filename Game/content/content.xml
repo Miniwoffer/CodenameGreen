@@ -43,6 +43,16 @@
                         <imgname>station.png</imgname>
                     </station>
                 </stations>
+				
+				<questItems>
+					<box>
+						<imgname>dropbox.png</imgname>
+					</box>
+					
+					<dropship>
+						<imgname>dropship.png</imgname>
+					</dropship>
+				</questItems>
             </images>
         </worldgen>
 		<imgfolders>
@@ -54,6 +64,7 @@
             <bullets>content/images/bullets/</bullets>
             <explosions>content/images/explosions/</explosions>
             <stations>content/images/spacestations/</stations>
+			<questItems>content/images/questItems</questItems>
 		</imgfolders>
         <soundfolders>
             <ships>content/sounds/ships/</ships>
