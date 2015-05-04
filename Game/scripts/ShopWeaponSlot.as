@@ -21,6 +21,12 @@
 		{
 			mySSD.setSelectedSlot(this);
 		}
+		
+		public function getWeapon():int
+		{
+			return weaponId;
+		}
+		
 		public function setWeapon(id:int)
 		{
 			weaponId = id;

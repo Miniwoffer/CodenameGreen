@@ -65,6 +65,15 @@
 		}
 		function buy(e:Event)
 		{
+			if(Main.getMain().getPlayer().playerCurrency >= ssd.getPrice())
+			{
+				Main.getMain().getPlayer().removeMoney(ssd.getPrice());
+				var arr:Array = new Array();
+				var ship:int = 0;
+				Main.getMain().getPlayer().setShip(ship,arr);
+				setVisibility(false);
+			}
+			trace("you aint got the cash yoo brotha");
 		}
 		function exit(e:Event)
 		{
@@ -74,13 +83,15 @@
 		{
 			if(isShipSelected)
 			{
-				ssd.setShip(shipNumber);				
+				ssd.setShip(shipNumber);
+				
 			}
 			else
 			{
 				ssd.setWeaponAtCurrentSlot(wepNumber);
 			}
-
+			
+			cost.text = String(ssd.getPrice());
 				
 		}
 		function weaponSelected(e:MouseEvent) {

@@ -167,8 +167,7 @@
 		}
 
 
-		var playerCurrency:int = 0;
-
+		public var playerCurrency:int = 11110;
 		public function removeMoney(amount:int)
 		{
 			var mymeonySound:Sound = Main.getMain().getSoundLoader().getSound(Main.getMain().getXMLLoader().getXmlData().settings.miscsounds.sound[0].soundnum);

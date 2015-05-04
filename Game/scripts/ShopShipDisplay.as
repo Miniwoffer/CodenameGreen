@@ -2,6 +2,7 @@
 	import flash.display.Bitmap;
 	import flash.display.MovieClip;
 	import flash.display.Shape;
+	import flash.sensors.Accelerometer;
 	
 	public class ShopShipDisplay extends MovieClip {
 		private static const WIDTH:int = 500;
@@ -27,11 +28,26 @@
 		public function getPrice():int
 		{
 			var xmlData:XML = Main.getMain().getXMLLoader().getXmlData();
-			xmlData = xmlData[0].ships.ship[currentShip];
-			var price:int =  xmlData[0].ships.ship[currentShip].price;
 			
+			if (currentShip != -1){
+				var price:int =  xmlData[0].ships.ship[currentShip].price;
+			}
+			for(var i:int = 0 ; i < slots.length ; i++)
+			{
+				price += int(xmlData[0].weapons.weapon[slots[i].getWeapon()].price);
+			}
 			return price;
 		}
+		
+		public function getShipAndWeapons(shipId:int,weaponId:Array):void
+		{
+			shipId = currentShip;
+						for(var i:int = 0 ; i < slots.length ; i++)
+			{
+				weaponId.push(slots[i].getWeapon());
+			}
+		}
+		
 		public function ShopShipDisplay() {
 			// constructor code
 		}
