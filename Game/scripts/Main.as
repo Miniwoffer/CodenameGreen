@@ -77,7 +77,7 @@
 			addEventListener(Event.ENTER_FRAME, frameEnter);
 
 			shop = new Shop();
-			shop.visible = false;
+			//shop.visible = false;
 			addChild(shop);
 		}
 		public function startGame()
