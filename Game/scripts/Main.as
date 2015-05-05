@@ -150,11 +150,11 @@
 		}
 		public function removeFolowCamera(mv: MovieClip)
 		{
-			for(var i:int = 0; i < followcamMovieClips.length;i++)
+			for(var i:int = 0; i < followcamMovieClips.length; i++)
 			{
 				if(followcamMovieClips[i] == mv)
 				{
-					followcamMovieClips.slice(i,1);
+					followcamMovieClips.splice(i,1);
 				}
 			}
 		}
@@ -305,24 +305,7 @@
 			//addChildAt(bc,0);
 		}
 		
-		public function generateDropQuest(){
-			
-			var xmlData = xmlLoader.getXmlData();
-			var bc2:MovieClip = new MovieClip();
-			var dropBox:Bitmap = imageLoader.getImage(xmlData[0].settings.worldgen.images.questitems.item[0].imgnum);
-			var dropShip:Bitmap = imageLoader.getImage(xmlData[0].settings.worldgen.images.questitems.item[1].imgnum);
-			var questCoordinatex = Math.random() * xmlData.mapsize;
-			var questCoordinatey = Math.random() * xmlData.mapsize;
-				dropBox.rotation = Math.random() * 360;
-				dropShip.rotation = Math.random() * 360;
-				dropShip.x = questCoordinatex;
-				dropShip.y = questCoordinatey;
-				dropBox.x = questCoordinatex + 100;
-				dropBox.y = questCoordinatey + 100;
-				bc2.addChild(dropShip);
-				bc2.addChild(dropBox);
-				addChildAt(bc2,getChildIndex(player.getShip())-1);
-		}
+
 		
 		public function getImageLoader():ImageLoader
 		{

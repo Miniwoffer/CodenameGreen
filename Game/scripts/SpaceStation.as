@@ -35,10 +35,14 @@
 			var player:Player = Main.getMain().getPlayer();
 			var playerLocation:Point = new Point(player.getShip().x,player.getShip().y);
 			var myLocation:Point = new Point(x,y);
-			if(Utilities.distahceTwoPoints(myLocation,playerLocation) < 200)
+			if(Utilities.distahceTwoPoints(myLocation,playerLocation) < 400)
 			{
 				dispText.visible = true;  
 				player.closeToShop = true;
+				if(Quest.dropGotten)
+				{
+					Quest.finishGetQuest();
+				}
 			}
 			else
 			{

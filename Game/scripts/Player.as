@@ -38,7 +38,6 @@
 			Main.getMain().addChild(marker);
 			Main.getMain().addFolowCamera(marker);
 			markers.push([target,marker]);
-			trace("marker added, woop wopp");
 		}
 		public function removeMarker(target:MovieClip)
 		{
@@ -47,7 +46,8 @@
 				if(markers[i][0] == target)
 				{
 					Main.getMain().removeChild(markers[i][1]);
-					markers.slice(i,1);
+					Main.getMain().removeFolowCamera(markers[i][1]);
+					markers.splice(i,1);
 				}
 			}
 		}
@@ -108,10 +108,9 @@
 			{
 				if(enemy[i].ship.dead)
 				{
-					enemy.slice(i,1);
+					enemy.splice(i,1);
 				}
 			}
-			trace(enemy.length);
 			while(enemy.length < 20)
 			{
 				enemy.push(new Ai(Math.random()*2,new Array(Math.random()*2,Math.random()*2),0,Math.random()*xmlData.mapsize,Math.random()*xmlData.mapsize));
