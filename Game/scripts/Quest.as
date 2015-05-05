@@ -12,6 +12,7 @@
 		static var randomCashReward:int = 0;
 		static public var dropGotten:Boolean = false;
 		static public var dropship:Bitmap;
+		static public var lastShip:MovieClip;
 
 		public function Quest() {
 			// constructor code
@@ -44,6 +45,7 @@
 				randomCashReward = int(Math.random()*250);
 				Main.getMain().getPlayer().addMoney(randomCashReward);
 				Main.getMain().hud.questText.text = "Good job pilot! Thanks for getting rid of those pesky people. Here is your reward - Spacergy: " + String(randomCashReward) + ".";
+				Main.getMain().getPlayer().removeMarker(lastShip);
 			}
 			else{
 				Main.getMain().hud.questText.text = "Thanks for helping us out, progress : " + String(killCounter) + "/20."

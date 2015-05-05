@@ -28,7 +28,6 @@
 			var eksists:int = -1;
 			for(var i:int = 0; i < images.length;i++)
 			{
-				done = false;
 				if(images[i][0] == url)
 					eksists = i;
 			}
@@ -37,6 +36,7 @@
 			
 			startNext();
 			lasteKoo.push(url)
+			done = false;
 			//Legger sammen køens lengde og bildenes lengde og trekker fra en siden index starter på 0
 			return lasteKoo.length+images.length-1;
 		}

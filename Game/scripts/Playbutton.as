@@ -14,7 +14,10 @@
 		}
 		function introIsPressed (e:MouseEvent)
 		{
-			Main.getMain().startGame();
+			if(Main.getMain().getImageLoader().done)
+			{
+				Main.getMain().startGame();
+			}
 		}
 	}
 	

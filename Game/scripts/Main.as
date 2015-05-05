@@ -25,7 +25,7 @@
 	public class Main extends MovieClip
 	{
 
-		public var debug = true;
+		public var debug = false;
 		private var followcamMovieClips:Array;
 		private var colTester:CollisionTest;
 		private var gameObjects:Array;
@@ -256,7 +256,7 @@
 			}
 			for (i = 0; i < planets; i++)
 			{
-				var planet:Bitmap = imageLoader.getImage(xmlData.images.planets.planet[Math.floor(Math.random() * xmlData.images.planets.children().length())].imgnum);
+				var planet:Bitmap = imageLoader.getImage(xmlData.images.planets.planet[Math.floor(Math.random() * xmlData.images.planets.children().length())].imgnum);//                                                                                             @(･ｪ･｡)@ You found the Code monkey yayyy
 				planet.rotation = Math.random() * 360;
 				planet.x = Math.random() * xmlData.mapsize;
 				planet.y = Math.random() * xmlData.mapsize;

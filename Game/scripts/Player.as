@@ -35,6 +35,7 @@
 			var marker:MovieClip = new MovieClip();
 			marker.addChild(image);
 			image.x = 50;
+			image.y = -image.width/2;
 			Main.getMain().addChild(marker);
 			Main.getMain().addFolowCamera(marker);
 			markers.push([target,marker]);
@@ -54,12 +55,7 @@
 		
 		public function Player()
 		{
-			var xmlData = Main.getMain().getXMLLoader().getXmlData().settings.worldgen;
-			
-			for(var i:int = 0; i < 10; i++)
-			{
-				enemy.push(new Ai(Math.random()*2,new Array(Math.random()*2,Math.random()*2),0,Math.random()*xmlData.mapsize,Math.random()*xmlData.mapsize));
-			}
+			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			input = new Object();
 			input.up = false;
 			input.down = false;
@@ -68,8 +64,8 @@
 			input.shoot = false;
 			input.shop = false;
 			myShip = new Ship(0,new Array(-1,2,2,2));
-			myShip.x = xmlData.mapsize/2;
-			myShip.y = xmlData.mapsize/2;
+			myShip.x = xmlData.settings.worldgen.mapsize/2;
+			myShip.y = xmlData.settings.worldgen.mapsize/2;
 			myShip.hpBar.visible = false;
 			Main.getMain().addChild(this);
 			// constructor code;
@@ -103,7 +99,7 @@
 		public function update(e:Event)
 		{
 			//Spawn more enemies if they are not on the map
-			var xmlData = Main.getMain().getXMLLoader().getXmlData().settings.worldgen;
+			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			for(var i:int = 0; i < enemy.length; i++)
 			{
 				if(enemy[i].ship.dead)
@@ -113,7 +109,16 @@
 			}
 			while(enemy.length < 20)
 			{
-				enemy.push(new Ai(Math.random()*2,new Array(Math.random()*2,Math.random()*2),0,Math.random()*xmlData.mapsize,Math.random()*xmlData.mapsize));
+				// DAT PUSH ಠ_ಠ, ALL THE RAN
+				// つ ◕_◕ ༽つ GIVE RANDOM PLZ つ ◕_◕ ༽つ
+				enemy.push(new Ai(Math.round((Math.random()*(xmlData.ships.children().length()-1))+ 0.5) ,new Array(
+																													Math.round((Math.random()*(xmlData.ships.children().length()-0.5))),
+																													Math.round((Math.random()*(xmlData.ships.children().length()-0.5))),
+																													Math.round((Math.random()*(xmlData.ships.children().length()-0.5))),
+																													Math.round((Math.random()*(xmlData.ships.children().length()-0.5))),
+																													Math.round((Math.random()*(xmlData.ships.children().length()-0.5))),
+																													Math.round((Math.random()*(xmlData.ships.children().length()-0.5)))
+																													),0,Math.random()*xmlData.settings.worldgen.mapsize,Math.random()*xmlData.settings.worldgen.mapsize));
 			}
 			
 			var mapSize = Main.getMain().getXMLLoader().getXmlData().settings.worldgen.mapsize;
