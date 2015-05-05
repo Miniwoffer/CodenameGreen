@@ -6,6 +6,7 @@
 	import flash.events.Event;
 	import flash.text.TextField;
 	
+	//Shopbutton.as er et skript som ikke utfører noen nyttig til butikken i seg selv, bare en bedre visuell opplevelsene der knappene beveger seg.
 	
 	public class ShopButton extends MovieClip {
 
