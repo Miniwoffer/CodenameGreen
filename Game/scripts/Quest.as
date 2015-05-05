@@ -19,7 +19,7 @@
 		}
 		
 		static public function generateQuest() {
-			var questNumber = int(Math.random()+1);
+			var questNumber = int(Math.round(Math.random()));
 			
 			if(questNumber == 0){
 				startKillQuest();
@@ -48,7 +48,7 @@
 		}
 		
 		static public function startGetQuest(){
-			Main.getMain().hud.questText.text = "Damn it, a recent supplyship was destroyed enroute to the facility. We need someone to pick up its resources and deliver them back here. If you complete the task, we will give you a 2% cut from the total supply drop price.";
+			Main.getMain().hud.questText.text = "Damn it, a recent supplyship was destroyed enroute to the facility. We need someone to pick up its resources and deliver them back here. There is a reward in it for you.";
 			Main.getMain().generateDropQuest();
 		}
 		
@@ -56,7 +56,7 @@
 			if(dropGotten){
 				questGotten = false;
 				dropGotten = false;
-				randomCashReward = int(Math.random()*400);
+				randomCashReward = int(Math.random()*500);
 				Main.getMain().getPlayer().addMoney(randomCashReward);
 				Main.getMain().hud.questText.text = "Good job pilot! Thank you, we owe you one after getting us those supplies, they are really important for us. Like i said, here is your Spacergy : " + String(randomCashReward) + ".";
 			}
