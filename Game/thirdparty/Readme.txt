@@ -1,1 +1,0 @@
-CollisionTest.as er ikke laget av oss og vi takker dermed internett mennesket for at han/hun la den ut
