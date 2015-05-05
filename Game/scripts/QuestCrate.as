@@ -4,6 +4,9 @@
 	import flash.display.Bitmap;
 	import flash.events.Event;
 	
+	//Skriptet blir kjørt utenfra når vi aktiverer questet i Quest.as. Hovedpoenget med klassen er å skape en boks som får en hitboks (siden klassen er en utvidelse av
+	// gameobject (som automatisk har hitboks)). Dette gjør at vi kan "merke" når spilleren kolliderer med boksen. Dersom spillerens skip kolliderer med boksen
+	// setter vi at kassen er funnet! Vi kaller også på "marker" funksjonen som viser til hvor boksen er, samt ødelegger den når spilleren er ferdig.
 	public class QuestCrate extends GameObject {
 
 		public function QuestCrate() {
