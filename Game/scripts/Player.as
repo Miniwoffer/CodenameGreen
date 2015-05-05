@@ -1,35 +1,33 @@
 ﻿package scripts
 {
 	import flash.events.KeyboardEvent;
-
 	import flash.events.MouseEvent;
-
-	import flash.ui.Keyboard;
 	import flash.events.Event;
+	import flash.ui.Keyboard;
 	import flash.display.MovieClip;
+	import flash.geom.Rectangle;
+	import flash.geom.Point;
+	import flash.media.Sound;
+	import flash.display.Bitmap;
 
 	import scripts.Ship;
 	import scripts.Main;
 	import scripts.Ai;
 	import scripts.Utilities;
 	import scripts.SpaceStation;
-	import flash.geom.Rectangle;
-	import flash.geom.Point;
-	import flash.media.Sound;
-	import flash.ui.GameInput;
-	import flash.display.Bitmap;
 
-	public class Player extends MovieClip
-	{
+	public class Player extends MovieClip{
 
 		public var myShip:Ship;
 		var input:Object;
 		var enemy:Array = new Array();
 		var markers:Array = new Array();
+		
+		//sjekker om spilleren er nære en romstasjon
 		public var closeToShop:Boolean = false;
 		
-		public function addMarker(target:MovieClip, type:int = 3)
-		{
+		//Lager en pill som altid peker på target
+		public function addMarker(target:MovieClip, type:int = 3){
 			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			var image:Bitmap = Main.getMain().getImageLoader().getImage(xmlData[0].settings.worldgen.images.questitems.item[type].imgnum);
 			var marker:MovieClip = new MovieClip();
@@ -40,8 +38,8 @@
 			Main.getMain().addFolowCamera(marker);
 			markers.push([target,marker]);
 		}
-		public function removeMarker(target:MovieClip)
-		{
+		//Fjerner pilen
+		public function removeMarker(target:MovieClip){
 			for(var i:int = 0; i < markers.length;i++)
 			{
 				if(markers[i][0] == target)
@@ -53,8 +51,7 @@
 			}
 		}
 		
-		public function Player()
-		{
+		public function Player(){
 			var xmlData = Main.getMain().getXMLLoader().getXmlData();
 			input = new Object();
 			input.up = false;
@@ -64,26 +61,28 @@
 			input.shoot = false;
 			input.shop = false;
 			myShip = new Ship(0,new Array(-1,2,2,2));
-			myShip.x = xmlData.settings.worldgen.mapsize/2;
-			myShip.y = xmlData.settings.worldgen.mapsize/2;
+			//flytter skipet til spilleren til senter av kartet
+			myShip.x = xmlData.settings.worldgen.mapsize/2; myShip.y = xmlData.settings.worldgen.mapsize/2;
+			
+			//gjemer hpbaren som følger med skipet siden vi har en i venstre hjørne
 			myShip.hpBar.visible = false;
-			Main.getMain().addChild(this);
-			// constructor code;
+			var main:Main = Main.getMain();
+			main.addChild(this);
+			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,kDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP,kUp);
 			addEventListener(Event.ENTER_FRAME,update);
-			var main:Main = Main.getMain();
-			for(var i:int = 0; i < main.numChildren;i++)
-			{
-				if(main.getChildAt(i) is SpaceStation)
-				{
+			for(var i:int = 0; i < main.numChildren;i++){
+				if(main.getChildAt(i) is SpaceStation){
 					addMarker(main.getChildAt(i) as MovieClip,2);
 				}
 			}
+			//seter penge displayet til det spilleren starter med
 			updateMoneyDisp();
 		}
-		public function setShip(shipID:int,weapons:Array)
-		{
+		
+		//en fugsjon som erstaters spillerens skip med et nytt, blir brukt av butikken når du kjøper et skip
+		public function setShip(shipID:int,weapons:Array){
 			var lastShip:Ship = myShip;
 			myShip = new Ship(shipID,weapons);
 			myShip.x = lastShip.x;
@@ -93,24 +92,22 @@
 
 			
 		}
-		public function getShip():Ship
-		{
+		//en get fungsjon for spillerens skip
+		public function getShip():Ship{
 			return myShip;
 		}
-		public function update(e:Event)
-		{
+		
+		//gjør alt som trengs å oppdateres hver frame
+		public function update(e:Event){
 			//Spawn more enemies if they are not on the map
 			var xmlData = Main.getMain().getXMLLoader().getXmlData();
-			for(var i:int = 0; i < enemy.length; i++)
-			{
-				if(enemy[i].ship.dead)
-				{
+			for(var i:int = 0; i < enemy.length; i++){
+				if(enemy[i].ship.dead){
 					enemy.splice(i,1);
 				}
 			}
-			while(enemy.length < 20)
-			{
-				// DAT PUSH ಠ_ಠ, ALL THE RAN
+			while(enemy.length < 20){
+				// DAT PUSH ಠ_ಠ,  ALL THE RANDOM
 				// つ ◕_◕ ༽つ GIVE RANDOM PLZ つ ◕_◕ ༽つ
 				enemy.push(new Ai(Math.round((Math.random()*(xmlData.ships.children().length()-1))+ 0.5) ,new Array(
 																													Math.round((Math.random()*(xmlData.ships.children().length()-0.5))),
@@ -152,6 +149,8 @@
 				{
 					myShip.shoot();
 				}
+				
+				
 				var myRect:Rectangle = main.scrollRect;
 				myRect.x =  myShip.x-(stage.stageWidth/2);
 				myRect.y =  myShip.y-(stage.stageHeight/2);
@@ -164,19 +163,15 @@
 				var myTarget:Point = new Point(mouseX,mouseY);
 				myShip.setWeaponAimLocation(myTarget);
 			}
-			else
-			{
-				//stage.resetf
-			}
 			//Makes the markers point at their targets
-			for(i = 0; i < markers.length;i++)
-			{
+			for(i = 0; i < markers.length;i++){
 				markers[i][1].rotation = Utilities.getRotationTwoPoints(new Point(markers[i][1].x,markers[i][1].y),new Point(markers[i][0].x,markers[i][0].y));
 			}
 			
 		}
-		public function kDown(e:KeyboardEvent)
-		{
+		
+		//Holder oversikti på når spilleren trykker en knapp
+		public function kDown(e:KeyboardEvent){
 			switch (e.keyCode)
 			{
 				case Keyboard.W :
@@ -208,8 +203,9 @@
 
 			}
 		}
-		public function kUp(e:KeyboardEvent)
-		{
+		
+		//Holder oversikit på når spilleren slipper en keyboard trykk
+		public function kUp(e:KeyboardEvent){
 			switch (e.keyCode)
 			{
 				case Keyboard.W :
@@ -243,10 +239,11 @@
 			}
 		}
 
-
+		//Spillerens pengepung
 		public var playerCurrency:int = 11110;
-		public function removeMoney(amount:int)
-		{
+		
+		//fjerner penger fra lomeboka og spiller av en lyd
+		public function removeMoney(amount:int){
 			var mymeonySound:Sound = Main.getMain().getSoundLoader().getSound(Main.getMain().getXMLLoader().getXmlData().settings.miscsounds.sound[0].soundnum);
 			mymeonySound.play();
 			playerCurrency -=  amount;
@@ -257,18 +254,16 @@
 			}
 			updateMoneyDisp();
 		}
-
-		public function addMoney(amount:int)
-		{
+		//leger til penger og spiller en lyd
+		public function addMoney(amount:int){
 			var mymeonySound:Sound = Main.getMain().getSoundLoader().getSound(Main.getMain().getXMLLoader().getXmlData().settings.miscsounds.sound[0].soundnum);
 			mymeonySound.play();
 			playerCurrency +=  amount;
 			updateMoneyDisp();
 		}
-
-		public function updateMoneyDisp()
-		{
-			Main.getMain().getHud().moneyDisp.text = "" + playerCurrency;
+		//oppdaterer textboksen i HUDen til å vise hvor mye penger spilleren har
+		public function updateMoneyDisp(){
+			Main.getMain().getHud().moneyDisp.text = String(playerCurrency);
 		}
 	}
 
