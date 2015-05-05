@@ -168,7 +168,7 @@
 				//stage.resetf
 			}
 			//Makes the markers point at their targets
-			for(var i:int = 0; i < markers.length;i++)
+			for(i = 0; i < markers.length;i++)
 			{
 				markers[i][1].rotation = Utilities.getRotationTwoPoints(new Point(markers[i][1].x,markers[i][1].y),new Point(markers[i][0].x,markers[i][0].y));
 			}
