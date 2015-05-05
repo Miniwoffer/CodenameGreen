@@ -82,21 +82,71 @@
         </soundfolders>
 	</settings>
 	<ships>
+    <ship>
+			<name>Awsemo 5000 DEV ship</name>
+            <price>0</price>
+			<imgname>ArmoireMassifica.png</imgname>
+			<health>35000</health>
+			<armor>85</armor>            
+			<speed>10</speed>
+			<mounts>
+				<mount>
+					<x>-10</x>
+					<y>-24</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+				<mount>
+					<x>-10</x>
+					<y>24</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>36</x>
+					<y>44</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>36</x>
+					<y>-47</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>-23</x>
+					<y>52</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>-23</x>
+					<y>-52</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+			</mounts>
+		</ship>
 		<ship>
 			<name>Tillennium Fighter</name>
-            <price>300</price>
+            <price>1500</price>
 			<imgname>TillenniumFighter.png</imgname>
 			<health>1000</health>
 			<armor>25</armor>
-			<speed>4</speed>
-            		<flames>
-				<flame>
-					<x>43</x>
-					<y>8</y>
-					<imgname>TFflame.png</imgname>
-					<numframes>2</numframes>
-				</flame>
-			</flames>
+			<speed>5</speed>
 			<mounts>
 				<mount>
 					<x>-5</x>
@@ -127,11 +177,11 @@
 		</ship>
 		<ship>
 			<name>Mjolnir Destroyer</name>
-            <price>1100</price>
+            <price>1800</price>
 			<imgname>MjolnirDestroyer.png</imgname>
 			<health>4000</health>
 			<armor>60</armor>
-			<speed>1</speed>
+			<speed>3</speed>
 			<mounts>
 				<mount>
 					<x>10</x>
@@ -169,35 +219,59 @@
 		</ship>
 		<ship>
 			<name>Armoire Massifica</name>
-            <price>700</price>
+            <price>3500</price>
 			<imgname>ArmoireMassifica.png</imgname>
 			<health>3500</health>
 			<armor>85</armor>            
 			<speed>2</speed>
-            		<flames>
-				<flame>
-					<x>43</x>
-					<y>8</y>
-					<imgname>TFflame.png</imgname>
-					<numframes>2</numframes>
-				</flame>
-			</flames>
 			<mounts>
 				<mount>
-					<x>-5</x>
-					<y>-14</y>
+					<x>-10</x>
+					<y>-24</y>
 					<rot>180</rot>
 					<movement>0</movement>
-					<size>0.4</size>
-                    <static>true</static>
+					<size>0.75</size>
+                    <static>false</static>
 				</mount>
 				<mount>
-					<x>-5</x>
-					<y>14</y>
+					<x>-10</x>
+					<y>24</y>
 					<rot>180</rot>
 					<movement>0</movement>
-					<size>0.4</size>
-                    <static>true</static>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>36</x>
+					<y>44</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>36</x>
+					<y>-47</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>-23</x>
+					<y>52</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
+				</mount>
+                <mount>
+					<x>-23</x>
+					<y>-52</y>
+					<rot>180</rot>
+					<movement>0</movement>
+					<size>0.75</size>
+                    <static>false</static>
 				</mount>
 			</mounts>
 		</ship>
@@ -219,16 +293,16 @@
                 -->
             <firerate>200</firerate><!-- Higher = slower -->
             <bullet>
-                <damage>50</damage>
+                <damage>25</damage>
                 <imgname>LaserpewpewBullet.png</imgname>
-                <speed>5</speed>
+                <speed>8</speed>
                 <lifetime>3000</lifetime>
                 <explodeondeath>false</explodeondeath>
                 <explosion>
                     <imgname>laserhit.png</imgname>
-                    <lifetime>300</lifetime>
+                    <lifetime>250</lifetime>
                     <soundname>explosion.mp3</soundname>
-                    <soundvolum>1.0</soundvolum>
+                    <soundvolum>0.8</soundvolum>
                 </explosion>
             </bullet>
 		</weapon>
@@ -276,16 +350,16 @@
                 -->
             <firerate>2000</firerate><!-- Higher = slower -->
             <bullet>
-                <damage>100</damage>
+                <damage>150</damage>
                 <imgname>railgun.png</imgname>
                 <speed>40</speed>
                 <lifetime>5000</lifetime>
                 <explodeondeath>false</explodeondeath>
                 <explosion>
                     <imgname>railgunhit.png</imgname>
-                    <lifetime>300</lifetime>
+                    <lifetime>200</lifetime>
                     <soundname>explosion.mp3</soundname>
-                    <soundvolum>1.0</soundvolum>
+                    <soundvolum>0.5</soundvolum>
                 </explosion>
             </bullet>
 		</weapon>
@@ -302,18 +376,18 @@
                     <!-- 
                 Projectile
                 -->
-            <firerate>500</firerate><!-- Higher = slower -->
+            <firerate>250</firerate><!-- Higher = slower -->
             <bullet>
-                <damage>600</damage>
+                <damage>15</damage>
                 <imgname>DuoCannonBullets.png</imgname>
                 <speed>10</speed>
                 <lifetime>5000</lifetime>
                 <explodeondeath>false</explodeondeath>
                 <explosion>
                     <imgname>nonLaserHit.png</imgname>
-                    <lifetime>300</lifetime>
+                    <lifetime>200</lifetime>
                     <soundname>explosion.mp3</soundname>
-                    <soundvolum>1.0</soundvolum>
+                    <soundvolum>0.6</soundvolum>
                 </explosion>
             </bullet>
 		</weapon>
