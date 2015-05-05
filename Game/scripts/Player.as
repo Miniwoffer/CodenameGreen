@@ -80,6 +80,7 @@
 					addMarker(main.getChildAt(i) as MovieClip,2);
 				}
 			}
+			updateMoneyDisp();
 		}
 		public function setShip(shipID:int,weapons:Array)
 		{

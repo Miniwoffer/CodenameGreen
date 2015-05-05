@@ -14,48 +14,24 @@
             <stations>2</stations>
             <images>
                 <stars>
-                    <star>
-                        <imgname>star jamal.png</imgname>
-                    </star>
-                    <star>
-                        <imgname>star juan.png</imgname>
-                    </star>
+                    <star><imgname>star jamal.png</imgname></star>
+                    <star><imgname>star juan.png</imgname></star>
                 </stars>
                 <planets>
-                    <planet>
-                        <imgname>planet.png</imgname>
-                    </planet>
-                    <planet>
-                        <imgname>planet1.png</imgname>
-                    </planet>
-                     <planet>
-                        <imgname>planet2.png</imgname>
-                    </planet>
-					<planet>
-                        <imgname>planet3.png</imgname>
-                    </planet>
-                     <planet>
-                        <imgname>sun.png</imgname>
-                    </planet>
+                    <planet><imgname>planet.png</imgname></planet>
+                    <planet><imgname>planet1.png</imgname></planet>
+                    <planet><imgname>planet2.png</imgname></planet>
+					<planet><imgname>planet3.png</imgname></planet>
+                    <planet><imgname>sun.png</imgname></planet>
                 </planets>
                 <stations>
-                    <station>
-                        <imgname>station.png</imgname>
-                    </station>
+                    <station><imgname>station.png</imgname></station>
                 </stations>
 				<questitems>
-					<item>
-						<imgname>dropbox.png</imgname>
-					</item>
-					<item>
-						<imgname>dropship.png</imgname>
-					</item>
-                    <item>
-                        <imgname>coolShopMarker.png</imgname>
-                    </item>
-                    <item>
-                        <imgname>scaryOpponentMarker.png</imgname>
-                    </item>
+					<item><imgname>dropbox.png</imgname></item>
+					<item><imgname>dropship.png</imgname></item>
+                    <item><imgname>coolShopMarker.png</imgname></item>
+                    <item><imgname>scaryOpponentMarker.png</imgname></item>
 				</questitems>
             </images>
         </worldgen>
@@ -82,7 +58,7 @@
         </soundfolders>
 	</settings>
 	<ships>
-    <ship>
+        <ship>
 			<name>Awsemo 5000 DEV ship</name>
             <price>0</price>
 			<imgname>ArmoireMassifica.png</imgname>
@@ -277,20 +253,13 @@
 		</ship>
 	</ships>
 	<weapons>
-        
-        
         <weapon>
 			<name>Red laser</name>
             <price>110</price>
 			<imgname>Laserpewpew.png</imgname>
             <soundname>laser.mp3</soundname>
             <soundvolum>0.2</soundvolum>
-            
-            
             <type>Projectile</type>
-                    <!-- 
-                Projectile
-                -->
             <firerate>200</firerate><!-- Higher = slower -->
             <bullet>
                 <damage>25</damage>
@@ -314,13 +283,7 @@
 			<imgname>RocketLunch.png</imgname>
             <soundname>RocketLunch.mp3</soundname>
             <soundvolum>1.0</soundvolum>
-            
-			<bulletimg>RocketLunch.png</bulletimg>
-            
             <type>Projectile</type>
-                    <!-- 
-                Projectile
-                -->
             <firerate>1500</firerate><!-- Higher = slower -->
             <bullet>
                 <damage>500</damage>
@@ -345,9 +308,6 @@
             <soundname>Railgun.mp3</soundname>
             <soundvolum>1.0</soundvolum>
             <type>Projectile</type>
-                    <!-- 
-                Projectile
-                -->
             <firerate>2000</firerate><!-- Higher = slower -->
             <bullet>
                 <damage>150</damage>
@@ -363,19 +323,13 @@
                 </explosion>
             </bullet>
 		</weapon>
-        
         <weapon>
 			<name>Dual barreld Cannon</name>
             <price>60</price>
 			<imgname>DuoCannon.png</imgname>
             <soundname>DuoCannon.mp3</soundname>
             <soundvolum>1.0</soundvolum>
-
-            
             <type>Projectile</type>
-                    <!-- 
-                Projectile
-                -->
             <firerate>250</firerate><!-- Higher = slower -->
             <bullet>
                 <damage>15</damage>

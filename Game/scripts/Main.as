@@ -24,8 +24,12 @@
 
 	public class Main extends MovieClip
 	{
-
+		//A satic function to make the main class easly accsesible to all other classes
+		static function getMain():Main{return main;}
+		
+		//A variable used in 
 		public var debug = false;
+		
 		private var followcamMovieClips:Array;
 		private var colTester:CollisionTest;
 		private var gameObjects:Array;
@@ -41,10 +45,6 @@
 		public var hud:Hud = new Hud;
 
 
-		static function getMain():Main
-		{
-			return main;
-		}
 		public function Main()
 		{
 			// constructor code
