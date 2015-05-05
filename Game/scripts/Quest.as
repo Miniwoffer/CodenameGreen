@@ -42,6 +42,7 @@
 			if(killCounter == 20){
 				killQuestStarted = false;
 				questGotten = false;
+				killCounter = 0;
 				randomCashReward = int(Math.random()*250);
 				Main.getMain().getPlayer().addMoney(randomCashReward);
 				Main.getMain().hud.questText.text = "Good job pilot! Thanks for getting rid of those pesky people. Here is your reward - Spacergy: " + String(randomCashReward) + ".";
@@ -71,7 +72,7 @@
 		static public function crateFound()
 		{
 			dropGotten = true;
-			Main.getMain().hud.questText.text = "You found it? return them to the neartest spacestation and collect your reward.";
+			Main.getMain().hud.questText.text = "You found it? return them to the nearest spacestation to collect your reward.";
 		}
 		static public function generateDropQuest(){
 			
