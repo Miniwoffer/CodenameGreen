@@ -13,16 +13,16 @@
 		0 - idle alert
 		1 - roaming
 		2 - destroy
-		3 - run away
-		4 - disabled
+		3<->2,147,483,647 - disabled
 		*/
 		var detectRange:int;
 		var attackRange:int;
 		var stopRange:int;
 		var looseRange:int;
 		static var ais:Array = new Array();
-		static function checkForEnemies(e:Event)
-		{
+		
+		//sjekker om det er noen fiender som har agro på spilleren så hvis den ikke gjør det spiller rolig musikk isden for kamp musikken
+		static function checkForEnemies(e:Event){
 			var agroEnemies:Boolean = false;
 			for (var i:int = 0; i <ais.length; i++)
 			{
@@ -40,14 +40,14 @@
 				}
 			}
 		}
-		public function getAiStatus()
-		{
+		
+		
+		public function getAiStatus(){
 			return aiStatus;
 		}
 		public var ship:Ship;
 		public function Ai(shipID:int, weapons:Array, stat:int = 4,locX:int = 0,locY:int = 0, detectRng:int = 600,attackRng:int = 500,stopRng:int = 300, loseRng:int = 1000)
 		{
-			// constructor code
 			ais.push(this);
 			looseRange = loseRng;
 			detectRange = detectRng;
@@ -57,7 +57,6 @@
 			ship.addEventListener(Event.ENTER_FRAME,update);
 			ship.x = locX;
 			ship.y = locY;
-			//range = range;
 			aiStatus = stat;
 		}
 		public function update(e:Event)
@@ -101,9 +100,6 @@
 							checkForEnemies(null);
 						}
 						break;
-					case 3 :
-
-						break;
 				}
 				if (ship.health < 50)
 				{
@@ -111,12 +107,9 @@
 				}
 			}
 		}
-		public function newRoamingDirection()
-		{
-
-		}
-		public function lookForPlayer(playerLocation:Point)
-		{
+		
+		//sjeker om spilleren er nære, hvis han er det angriper han og setter på kamp musikk
+		public function lookForPlayer(playerLocation:Point){
 			if (Utilities.distahceTwoPoints(playerLocation,new Point(ship.x,ship.y)) < detectRange)
 			{
 				aiStatus = 2;
