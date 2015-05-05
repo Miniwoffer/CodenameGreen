@@ -22,7 +22,7 @@
 		}
 		
 		static public function generateQuest() {
-			var questNumber = 1;//int(Math.round(Math.random()));
+			var questNumber = int(Math.round(Math.random()));
 			
 			if(questNumber == 0){
 				startKillQuest();
