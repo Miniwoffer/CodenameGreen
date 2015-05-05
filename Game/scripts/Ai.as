@@ -44,7 +44,7 @@
 		{
 			return aiStatus;
 		}
-		var ship:Ship;
+		public var ship:Ship;
 		public function Ai(shipID:int, weapons:Array, stat:int = 4,locX:int = 0,locY:int = 0, detectRng:int = 600,attackRng:int = 500,stopRng:int = 300, loseRng:int = 1000)
 		{
 			// constructor code

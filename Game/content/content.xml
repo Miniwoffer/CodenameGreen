@@ -50,6 +50,12 @@
 					<item>
 						<imgname>dropship.png</imgname>
 					</item>
+                    <item>
+                        <imgname>coolShopMarker.png</imgname>
+                    </item>
+                    <item>
+                        <imgname>scaryOpponentMarker.png</imgname>
+                    </item>
 				</questitems>
             </images>
         </worldgen>

@@ -11,9 +11,13 @@
 	import scripts.Ship;
 	import scripts.Main;
 	import scripts.Ai;
+	import scripts.Utilities;
+	import scripts.SpaceStation;
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
 	import flash.media.Sound;
+	import flash.ui.GameInput;
+	import flash.display.Bitmap;
 
 	public class Player extends MovieClip
 	{
@@ -21,7 +25,33 @@
 		public var myShip:Ship;
 		var input:Object;
 		var enemy:Array = new Array();
+		var markers:Array = new Array();
 		public var closeToShop:Boolean = false;
+		
+		public function addMarker(target:MovieClip, type:int = 3)
+		{
+			var xmlData = Main.getMain().getXMLLoader().getXmlData();
+			var image:Bitmap = Main.getMain().getImageLoader().getImage(xmlData[0].settings.worldgen.images.questitems.item[type].imgnum);
+			var marker:MovieClip = new MovieClip();
+			marker.addChild(image);
+			image.x = 50;
+			Main.getMain().addChild(marker);
+			Main.getMain().addFolowCamera(marker);
+			markers.push([target,marker]);
+			trace("marker added, woop wopp");
+		}
+		public function removeMarker(target:MovieClip)
+		{
+			for(var i:int = 0; i < markers.length;i++)
+			{
+				if(markers[i][0] == target)
+				{
+					Main.getMain().removeChild(markers[i][1]);
+					markers.slice(i,1);
+				}
+			}
+		}
+		
 		public function Player()
 		{
 			var xmlData = Main.getMain().getXMLLoader().getXmlData().settings.worldgen;
@@ -46,6 +76,14 @@
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,kDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP,kUp);
 			addEventListener(Event.ENTER_FRAME,update);
+			var main:Main = Main.getMain();
+			for(var i:int = 0; i < main.numChildren;i++)
+			{
+				if(main.getChildAt(i) is SpaceStation)
+				{
+					addMarker(main.getChildAt(i) as MovieClip,2);
+				}
+			}
 		}
 		public function setShip(shipID:int,weapons:Array)
 		{
@@ -55,6 +93,8 @@
 			myShip.y = lastShip.y;
 			myShip.rotation = lastShip.rotation;
 			lastShip.die();
+
+			
 		}
 		public function getShip():Ship
 		{
@@ -62,6 +102,21 @@
 		}
 		public function update(e:Event)
 		{
+			//Spawn more enemies if they are not on the map
+			var xmlData = Main.getMain().getXMLLoader().getXmlData().settings.worldgen;
+			for(var i:int = 0; i < enemy.length; i++)
+			{
+				if(enemy[i].ship.dead)
+				{
+					enemy.slice(i,1);
+				}
+			}
+			trace(enemy.length);
+			while(enemy.length < 20)
+			{
+				enemy.push(new Ai(Math.random()*2,new Array(Math.random()*2,Math.random()*2),0,Math.random()*xmlData.mapsize,Math.random()*xmlData.mapsize));
+			}
+			
 			var mapSize = Main.getMain().getXMLLoader().getXmlData().settings.worldgen.mapsize;
 			var main:Main = Main.getMain();
 			if (! main.gamepaused && myShip != null)
@@ -108,6 +163,12 @@
 			{
 				//stage.resetf
 			}
+			//Makes the markers point at their targets
+			for(var i:int = 0; i < markers.length;i++)
+			{
+				markers[i][1].rotation = Utilities.getRotationTwoPoints(new Point(markers[i][1].x,markers[i][1].y),new Point(markers[i][0].x,markers[i][0].y));
+			}
+			
 		}
 		public function kDown(e:KeyboardEvent)
 		{

@@ -53,9 +53,6 @@
 				main = this;
 			}
 			followcamMovieClips = new Array();
-			addFolowCamera(hud);
-			addChild(hud);
-			hud.visible = false;
 			gamepaused = new Boolean(false);
 			xmlLoader = new XmlLoader("content/content.xml");
 			soundLoader = new SoundLoader();
@@ -75,10 +72,13 @@
 				}
 			}
 			addEventListener(Event.ENTER_FRAME, frameEnter);
-
 			shop = new Shop();
+			addFolowCamera(shop);
+			addFolowCamera(hud);
 			shop.visible = false;
+			hud.visible = false;
 			addChild(shop);
+			addChild(hud);
 		}
 		public function startGame()
 		{
@@ -148,10 +148,20 @@
 		{
 			followcamMovieClips.push(mv);
 		}
+		public function removeFolowCamera(mv: MovieClip)
+		{
+			for(var i:int = 0; i < followcamMovieClips.length;i++)
+			{
+				if(followcamMovieClips[i] == mv)
+				{
+					followcamMovieClips.slice(i,1);
+				}
+			}
+		}
 		public function moveUI(e: Event)
 		{
 			var centerpnt:Point = getCameraCenter();
-			for (var i: int = 0; i < followcamMovieClips.length; i++)
+			for (var i: int = followcamMovieClips.length-1; i >= 0; i--)
 			{
 				followcamMovieClips[i].x = centerpnt.x;
 				followcamMovieClips[i].y = centerpnt.y;
@@ -359,10 +369,11 @@
 		}
 		public function resetGame()
 		{
-			for(var i:int = 0; i < numChildren;i++)
+			while(stage.numChildren > 0)
 			{
-				removeChildAt(i);
+				stage.removeChildAt(0);
 			}
+			gotoAndStop(0);
 		} 
 
 	}

@@ -21,6 +21,7 @@
 		var rotVelocity:Number;
 		var move:Boolean;/**/
 		var myId:int;
+		var dead:Boolean = false;
 		
 		var flames:Array;
 		public var hpBar:hpbarsmall;
@@ -143,6 +144,7 @@
 		}
 		public function die()
 		{
+			dead = true;
 			Ai.checkForEnemies(null);
 			Main.getMain().getPlayer().addMoney(100);
 			if(Quest.killQuestStarted){

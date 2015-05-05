@@ -35,7 +35,6 @@
 			ssd = new ShopShipDisplay();
 			addChild(ssd);
 			var main:Main = Main.getMain();
-			main.addFolowCamera(this);
 			var xmldata:XML = main.getXMLLoader().getXmlData()
 			
 			weaponText.addEventListener(MouseEvent.CLICK, weaponSelected);
@@ -49,7 +48,7 @@
 			
 			
 			exitButton.Text = "Exit";
-			exitButton.updateText();
+			exitButton.updateText();/**/
 			
 			SelectButton.Text = "Select";
 			SelectButton.updateText();
