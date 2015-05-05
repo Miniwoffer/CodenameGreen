@@ -7,6 +7,8 @@
 	import flash.media.Sound;
 	import flash.media.SoundTransform;
 	
+	//Explosion.as er en klasse som tilføyer lyder og bilder når en eksplosjon skjer, ettersom hva som sprenger (weaponId)
+	
 	public class Explosion extends MovieClip {
 		var image:Bitmap;
 		var deathTimer:Timer;
@@ -27,12 +29,16 @@
 			// constructor code
 			
 		}
+		
+		//Gjør Skaleringen mindre
 		public function update(e:Event)
 		{
 			scaleX = scaleX*0.8;
 			scaleY = scaleX;
 			rotation = Math.random()*360;
 		}
+		
+		//Ødelegger explosjonen
 		public function destroy(e:Event)
 		{
 			parent.removeChild(this);

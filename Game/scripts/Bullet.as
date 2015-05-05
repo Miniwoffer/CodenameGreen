@@ -20,6 +20,8 @@
 		protected var weapon:Weapon;
 		protected var dmg:Number;
 		var target:MovieClip;
+		
+		//Sjekker hva slags våpen det er og størrelsen slik at vi kan sette hva slags kule det skal være + hva slags størrelse.
 		public function Bullet(weaponid:int, wep:Weapon,size:Number)
 		{
 			super();
@@ -36,7 +38,7 @@
 			addChild(image);
 
 		}
-
+		// Denne sier hva som skal skje når bullet kolliderer med noe, dersom det ikke er seg selv.
 		override public function onCollision(other:GameObject)
 		{
 			super.onCollision(other);
@@ -45,8 +47,6 @@
 			{
 				if (otherShip != weapon.parent)
 				{
-					//TODO: make "boom pow sklaboosh" where they meet
-					//TODO: play sounds
 					otherShip.applyDmg(dmg);
 					var explodo = new Explosion(weaponID,scaleX);
 					explodo.x = x;
@@ -56,6 +56,7 @@
 				}
 			}
 		}
+		
 		override public function destroy(e:Event)
 		{
 			super.destroy(e);

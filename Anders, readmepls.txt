@@ -1,0 +1,1 @@
+Noen funksjoner er litt overflødig pga at vi skal planla/planlegger å tilføye funksjoner til spillet i etterkant av projektet.

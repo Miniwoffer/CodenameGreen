@@ -17,6 +17,7 @@
 		var loader:Loader;
 		public var done:Boolean = true;
 		
+		// Vi laster inn bildene og gir et error om den ikke klarer det.
 		public function ImageLoader() {
 			lasteKoo = new Array();
 			images = new Array();
@@ -24,6 +25,8 @@
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadImage);
 			loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, failedImageLoade);
 		}
+		
+		//Finner ut hvilke bilder som kan lastes inn fra XML-filen. Altså om den eksisterer eller ikke
 		public function addImage(url:String):int{
 			var eksists:int = -1;
 			for(var i:int = 0; i < images.length;i++)
@@ -40,7 +43,8 @@
 			//Legger sammen køens lengde og bildenes lengde og trekker fra en siden index starter på 0
 			return lasteKoo.length+images.length-1;
 		}
-		//Returnerer blide som ligger lagra, det er viktig å ikke bruke dette til å tegne med siden dens trengs for lagrning
+		
+		//Returnerer bilde som ligger lagra, det er viktig å ikke bruke dette til å tegne med siden dens trengs for lagrning
 		public function getImageRefrence(i:int):Bitmap
 		{
 			return images[i];
@@ -62,6 +66,7 @@
 			lasteKoo.shift();
 			startNext();
 		}
+		
 		//legger til bilde i arrayen
 		private function loadImage(e:Event):void
 		{  
@@ -71,6 +76,7 @@
 			startNext();
 			
 		}
+		
 		private function startNext():void
 		{
 			if(lasteKoo.length > 0){

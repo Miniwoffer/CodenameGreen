@@ -1,6 +1,8 @@
 ﻿package scripts  {
 	import flash.events.Event;
 	import flash.display.MovieClip;
+	
+	// GameObject.as er filen som sjekker kollisjoner, både når de starter å skje og når de slutter å skje. Ikke noe fancy.
 
 	public class GameObject extends MovieClip {
 		private var isInCol:Boolean = false;
@@ -10,7 +12,7 @@
 		public var ignore:Array = new Array();
 		
 		public function GameObject() {
-			// constructor code
+			// constructor code 
 			Main.getMain().addChild(this);
 			addEventListener(Event.ENTER_FRAME,update);
 		}
